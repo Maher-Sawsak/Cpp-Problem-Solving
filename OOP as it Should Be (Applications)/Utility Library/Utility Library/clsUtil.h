@@ -11,7 +11,7 @@ static	void Srand() {
 		srand((unsigned)time(NULL));
 	}
 
-static	enum enCharType { SmallLetter = 1, CapitalLetter = 2, SpecialCharacter = 3, Digit = 4, Mix = 5};
+static	enum enCharType { SmallLetter = 1, CapitalLetter = 2, SpecialCharacter = 3, Digit = 4, MixChars = 5};
 
 static	int GetRawRandomNumber() {
 		return rand();
@@ -26,6 +26,15 @@ static	int RandomNumberInRange(int From, int To) {
 	}
 
 static	char RandomCharacter(enCharType CharType) {
+	
+
+	if (CharType == enCharType::MixChars) {
+	
+		//this is randomly char Capital/Small/Special/Digit
+	    CharType = (enCharType)RandomNumberInRange(1, 4);
+
+	}
+
 
 		switch (CharType) {
 
@@ -43,10 +52,8 @@ static	char RandomCharacter(enCharType CharType) {
 		case enCharType::Digit:
 			return char(RandomNumberInRange(48, 57));
 			break;
-
-		case enCharType::Mix:
-			return GetRawRandomNumber();
-			break;
+		default:
+			return char(RandomNumberInRange(65, 90)); //its more safe.
 		}
 	}
 
@@ -98,7 +105,7 @@ static	vector<string> GenerateKeysReturnVector(enCharType KeysCharType ,short le
 
 static	string EncryptText(string Statement, short EncryptionKey) {
 
-		for (int i = 0;i <= Statement.length();i++) {
+		for (int i = 0;i < Statement.length();i++) {
 
 			Statement[i] = char((int)Statement[i] + EncryptionKey);
 		}
