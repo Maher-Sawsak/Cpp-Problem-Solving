@@ -117,7 +117,7 @@ static	string EncryptText(string Statement, short EncryptionKey) {
 static	string DecryptText(string EncryptionsText, short DecryptionKey) {
 
 
-		for (int i = 0; i <= EncryptionsText.length();i++) {
+		for (int i = 0; i < EncryptionsText.length();i++) {
 
 			EncryptionsText[i] = char((int)EncryptionsText[i] - DecryptionKey);
 
