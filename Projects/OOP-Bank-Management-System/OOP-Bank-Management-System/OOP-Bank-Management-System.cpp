@@ -5,60 +5,54 @@
 #include "clsBankClient.h"
 #include "clsInputValidate.h"
 #include "clsInputValidate.h"
+#include <iomanip>
 
-
-void ReadClientInfo(clsBankClient& Client) {
-	
-	Client.FirstName = clsInputValidate::ReadString("\nPlease Enter The First Name      : ");
-	Client.LastName = clsInputValidate::ReadString("\nPlease Enter The Last Name        : ");
-	Client.Phone = clsInputValidate::ReadString("\nPlease Enter The Phone Number     : ");
-	Client.Email = clsInputValidate::ReadString("\nPlease Enter The Email            : ");
-	Client.PinCode = clsInputValidate::ReadString("\nPlease Enter The Pin Code         : ");
-	Client.AccountBalance = clsInputValidate::ReadFloatNumber("\nPlease Enter The Account Balance  : ");
-	
+void PrintClientRecordLine(clsBankClient Client) {
+	cout << "| " << setw(15) << left << Client.AccountNumber;
+	cout << "| " << setw(20) << left << Client.GetFullName();
+	cout << "| " << setw(12) << left << Client.Phone;
+	cout << "| " << setw(20) << left << Client.Email;
+	cout << "| " << setw(10) << left << Client.PinCode;
+	cout << "| " << setw(12) << left << Client.AccountBalance;
 }
 
 
-void DeleteClient() {
+void ShowClientsList() {
 
 
-	string AccountNumber;
+	vector<clsBankClient> ClientsList = clsBankClient::GetClientsList();
 
-	AccountNumber = clsInputValidate::ReadString("Please Enter The Account Number To Delete : ");
+	cout << "\n---------------------------------------------------------------------------------------------------\n";
+	cout << "| " << left << setw(15) << "Accout Number";
+	cout << "| " << left << setw(20) << "Client Name";
+	cout << "| " << left << setw(12) << "Phone";
+	cout << "| " << left << setw(20) << "Email";
+	cout << "| " << left << setw(10) << "Pin Code";
+	cout << "| " << left << setw(12) << "Balance";
+	cout << "\n---------------------------------------------------------------------------------------------------\n";
 
-	while (!clsBankClient::IsClientExist(AccountNumber)) {
-
-		AccountNumber = clsInputValidate::ReadString("Account Number Is Not Exist!! , Please Enter Again : ");
-
-	}
-
-
-	//GetAddNewClientObject will take the account number and it will return object with mode AddNew cuz ((Save() Need it)) and the Account Number.
-	clsBankClient Client = clsBankClient::Find(AccountNumber);
-	Client.Print();
-
-	cout << "\nAre you sure you want to delete this client? y/n?  ";
-	char Answer = 'n';
-	cin >> Answer;
-	if (Answer == 'y' || Answer == 'Y') {
+	if (ClientsList.size() == 0) {
 	
-		if (Client.Delete()) {
-		
-			cout << "\nClient Deleted Successfully!!\n";
-		}
-		else {
-
-			cout << "\nError Client Was Not Deleted\n";
-		}
+		cout << "\t\t\t\tNo Clients Available In the System!";
 
 	}
+	else {
+	
+		for (clsBankClient& C : ClientsList) {
+			cout << endl;
+			PrintClientRecordLine(C);
+			
+		}
+		
+	}
 
+	cout << "\n\n----------------------------------------------------------------------------------------------------\n";
 
 }
 
 
 int main()
 {
-	DeleteClient();
+	ShowClientsList();
 	
 }
