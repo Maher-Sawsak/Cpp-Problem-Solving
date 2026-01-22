@@ -19,50 +19,46 @@ void ReadClientInfo(clsBankClient& Client) {
 }
 
 
-void AddNewClient() {
+void DeleteClient() {
 
 
 	string AccountNumber;
 
-	AccountNumber = clsInputValidate::ReadString("Please Enter The Account Number For New Client : ");
+	AccountNumber = clsInputValidate::ReadString("Please Enter The Account Number To Delete : ");
 
-	while (clsBankClient::IsClientExist(AccountNumber)) {
+	while (!clsBankClient::IsClientExist(AccountNumber)) {
 
-		AccountNumber = clsInputValidate::ReadString("Account Number Is Already Exist, Choose another one : ");
+		AccountNumber = clsInputValidate::ReadString("Account Number Is Not Exist!! , Please Enter Again : ");
 
 	}
+
 
 	//GetAddNewClientObject will take the account number and it will return object with mode AddNew cuz ((Save() Need it)) and the Account Number.
-	clsBankClient Client = clsBankClient::GetAddNewClientObject(AccountNumber);
+	clsBankClient Client = clsBankClient::Find(AccountNumber);
+	Client.Print();
 
-
-	ReadClientInfo(Client);
-
-
-	clsBankClient::enSaveResult SaveResult;
-
-	//Save will Return enum if failed to save data in the file or done successfully. 
-	SaveResult = Client.Save();
-
-
-	switch (SaveResult)
-	{
-	case clsBankClient::enSaveResult::svSuccessed:
-		cout << "\nUpdate Done Successfully , Thanks :-) \n";
-		break;
-	case  clsBankClient::enSaveResult::svFailEmptyObject:
-		cout << "\nUpdate Failed,The Client Data Is Empty\n";
-		break;
+	cout << "\nAre you sure you want to delete this client? y/n?  ";
+	char Answer = 'n';
+	cin >> Answer;
+	if (Answer == 'y' || Answer == 'Y') {
 	
-	case clsBankClient::svFaildAccountNumberExists :
-		cout << "\nThe Account Number Is Used! :-( \n";
+		if (Client.Delete()) {
+		
+			cout << "\nClient Deleted Successfully!!\n";
+		}
+		else {
+
+			cout << "\nError Client Was Not Deleted\n";
+		}
+
 	}
+
 
 }
 
 
 int main()
 {
-	AddNewClient();
-
+	DeleteClient();
+	
 }
