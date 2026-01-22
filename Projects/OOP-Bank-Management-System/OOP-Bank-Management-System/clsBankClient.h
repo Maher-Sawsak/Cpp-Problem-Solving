@@ -10,7 +10,7 @@ class clsBankClient : public clsPerson
 {
 
 private :
-	enum enMode{EmptyMode = 0 , UpdateMode = 1};
+	enum enMode{EmptyMode = 0 , UpdateMode = 1 , AddNewMode = 2};
 
 	string _AccountNumber;
 	string _PinCode;
@@ -18,7 +18,7 @@ private :
 	enMode _Mode;
 
 
-	static clsBankClient _ConvertLinetoClientObject(string Line, string Delim = "#//#") {
+	static clsBankClient _ConvertLineToClientObject(string Line, string Delim = "#//#") {
 		vector<string> vClient = clsString::Split(Line, Delim);
 
 		return clsBankClient(
@@ -82,7 +82,7 @@ private :
 			string Line;
 			while (getline(MyFile, Line)) {
 
-				clsBankClient Client = _ConvertLinetoClientObject(Line);
+				clsBankClient Client = _ConvertLineToClientObject(Line);
 
 				vClients.push_back(Client);
 
@@ -108,6 +108,25 @@ private :
 		_SaveClientsDataToFile(_vClient);
 	}
 
+	void _AddNew() {
+	
+		_AddDataLineToFile(_ConvertClientObjectToLine(*this));
+	
+	}
+
+	void _AddDataLineToFile(string ClientDataByLine) {
+	
+		fstream MyFile;
+		MyFile.open("Clients.txt", ios::out | ios::app);//this mode if the file exist app mode will add to it without deleting all data.
+	
+		if (MyFile.is_open()) {
+		
+		
+			MyFile << ClientDataByLine << endl;
+			MyFile.close();
+
+		}
+	}
 
 public:
 	bool IsEmpty() {
@@ -186,7 +205,7 @@ public:
 		
 			while (getline(MyFile, Line)) {
 			
-				clsBankClient Client = _ConvertLinetoClientObject(Line);
+				clsBankClient Client = _ConvertLineToClientObject(Line);
 
 				if (Client.AccountNumber == AccountNumber) {
 				
@@ -214,7 +233,7 @@ public:
 
 			while (getline(MyFile, Line)) {
 
-				clsBankClient Client = _ConvertLinetoClientObject(Line);
+				clsBankClient Client = _ConvertLineToClientObject(Line);
 
 				if (Client.AccountNumber == AccountNumber && Client.PinCode == PinCode) {
 
@@ -242,17 +261,17 @@ public:
 }
 
 
-  enum enSaveResult { svFailEmptyObject = 0 , svSuccessed = 1};
+  enum enSaveResult { svFailEmptyObject = 0, svSuccessed = 1, svFaildAccountNumberExists = 2 };
 
 
   //This method to save client data to file.
   enSaveResult Save() {
-  
-  
+
+
 	  switch (_Mode) {
-	  //If the client object empty i will not save it in the file cuz i dont want an empty client in file.
+		  //If the client object empty i will not save it in the file cuz i dont want an empty client in file.
 	  case  enMode::EmptyMode:
-      
+
 		  return enSaveResult::svFailEmptyObject;
 
 	  case enMode::UpdateMode:
@@ -260,12 +279,28 @@ public:
 		  _Update();
 
 		  return enSaveResult::svSuccessed;
-	  
-	  
-	  
+
+	  case enMode::AddNewMode:
+		  //If The client accountnumber exist so i will return false he can't add client with same account number.
+		  if (IsClientExist(AccountNumber)) {
+			  return enSaveResult::svFaildAccountNumberExists;
+		  }
+		  else {
+			  // Change mode to UpdateMode after successful creation to prevent 
+             // creating duplicate records if Save() is called again.
+			  _AddNew();
+			  _Mode = enMode::UpdateMode;
+			  return enSaveResult::svSuccessed;
+		  }
+
 	  }
   
-  
+  }
+
+
+  static clsBankClient GetAddNewClientObject(string AccountNumber) {
+      //This will take the Account Number And put The Mode for it, because i need it in the save method to know, which function should i use?.
+	  return clsBankClient(enMode::AddNewMode, "", "", "", "", AccountNumber ,"", 0);
   }
 
 };
