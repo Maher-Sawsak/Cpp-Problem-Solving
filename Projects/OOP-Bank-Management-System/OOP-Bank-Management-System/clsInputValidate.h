@@ -87,12 +87,39 @@ public:
 		return Number;
 	}
 
+
+	static float ReadFloatNumber(string AskingMessage, string ErrorMessage = "Invalid double Number! ") {
+
+		float Number = 0;
+
+		cout << AskingMessage << endl;
+
+		while (!(cin >> Number)) {
+
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << ErrorMessage;
+		}
+
+		return Number;
+	}
+
+
+
+
 	static bool IsValidDate(clsDate Date) {
 	
 		return(clsDate::IsValidDate(Date));
 	}
 
 
+	static string ReadString(string AskingMessage) {
+	
+		string S1;
+		cout<< AskingMessage;
+		getline(cin >> ws, S1);
+		return S1;
+	}
 
 };
 
