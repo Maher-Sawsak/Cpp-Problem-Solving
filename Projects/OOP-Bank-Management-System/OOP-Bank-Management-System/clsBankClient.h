@@ -15,6 +15,8 @@ private :
 	string _AccountNumber;
 	string _PinCode;
 	float _AccountBalance;
+	//this will be for delete to mark.
+	bool _MarkedForDelete = false;
 	enMode _Mode;
 
 
@@ -58,11 +60,13 @@ private :
 		if (MyFile.is_open()) {
 		
 		
-			for (clsBankClient C : vContainingClientData) {
-            			
-				DataLine = _ConvertClientObjectToLine(C , "#//#");
-				
-				MyFile << DataLine << endl;
+			for (clsBankClient &C : vContainingClientData) {
+			//this will only write the marked as false and by default its false delete will mark the obj I want to delete as true so won't be written. 
+				if (C._MarkedForDelete == false) {
+
+					DataLine = _ConvertClientObjectToLine(C, "#//#");
+					MyFile << DataLine << endl;
+				}
 			}
 			MyFile.close();
 
@@ -249,6 +253,26 @@ public:
 		return _GetEmptyClientObject();
 	}
 
+	bool Delete() {
+	
+		vector<clsBankClient> vClients;
+		vClients = _LoadClientsDataFromFile();
+
+		for (clsBankClient& C : vClients) {
+
+			if (C.AccountNumber == AccountNumber) {
+
+				C._MarkedForDelete = true;
+				break;
+			}
+
+		}
+
+		_SaveClientsDataToFile(vClients);
+
+		*this = _GetEmptyClientObject();
+		return true;
+	}
 
 
   static bool IsClientExist(string AccountNumber) {
