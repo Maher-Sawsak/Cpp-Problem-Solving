@@ -8,7 +8,7 @@
 
 
 void ReadClientInfo(clsBankClient& Client) {
-
+	
 	Client.FirstName = clsInputValidate::ReadString("\nPlease Enter The First Name      : ");
 	Client.LastName = clsInputValidate::ReadString("\nPlease Enter The Last Name        : ");
 	Client.Phone = clsInputValidate::ReadString("\nPlease Enter The Phone Number     : ");
@@ -19,24 +19,23 @@ void ReadClientInfo(clsBankClient& Client) {
 }
 
 
-void UpdateClient() {
+void AddNewClient() {
 
 
 	string AccountNumber;
 
-	AccountNumber = clsInputValidate::ReadString("Please Enter The Account Number : ");
+	AccountNumber = clsInputValidate::ReadString("Please Enter The Account Number For New Client : ");
 
-	while (!clsBankClient::IsClientExist(AccountNumber)) {
+	while (clsBankClient::IsClientExist(AccountNumber)) {
 
-		AccountNumber = clsInputValidate::ReadString("Invalid Account Number!! Please Enter Again : ");
+		AccountNumber = clsInputValidate::ReadString("Account Number Is Already Exist, Choose another one : ");
 
 	}
-	clsBankClient Client = clsBankClient::Find(AccountNumber);
-	Client.Print();
 
-	cout << "---------------------------------\n";
-	cout << "          Update Client            ";
-	cout << "\n---------------------------------";
+	//GetAddNewClientObject will take the account number and it will return object with mode AddNew cuz ((Save() Need it)) and the Account Number.
+	clsBankClient Client = clsBankClient::GetAddNewClientObject(AccountNumber);
+
+
 	ReadClientInfo(Client);
 
 
@@ -52,8 +51,11 @@ void UpdateClient() {
 		cout << "\nUpdate Done Successfully , Thanks :-) \n";
 		break;
 	case  clsBankClient::enSaveResult::svFailEmptyObject:
-		cout << "\nUpdate Failed, Maybe The Client Data Is Empty\n";
+		cout << "\nUpdate Failed,The Client Data Is Empty\n";
 		break;
+	
+	case clsBankClient::svFaildAccountNumberExists :
+		cout << "\nThe Account Number Is Used! :-( \n";
 	}
 
 }
@@ -61,6 +63,6 @@ void UpdateClient() {
 
 int main()
 {
-	UpdateClient();
+	AddNewClient();
 
 }
