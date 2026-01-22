@@ -4,30 +4,24 @@
 #include <iostream>
 #include "clsBankClient.h"
 #include "clsInputValidate.h"
-#include "clsInputValidate.h"
+#include "clsUtil.h"
 #include <iomanip>
 
-void PrintClientRecordLine(clsBankClient Client) {
+void PrintClientRecordBalanceLine(clsBankClient Client) {
 	cout << "| " << setw(15) << left << Client.AccountNumber;
-	cout << "| " << setw(20) << left << Client.GetFullName();
-	cout << "| " << setw(12) << left << Client.Phone;
-	cout << "| " << setw(20) << left << Client.Email;
-	cout << "| " << setw(10) << left << Client.PinCode;
+	cout << "| " << setw(40) << left << Client.GetFullName();
 	cout << "| " << setw(12) << left << Client.AccountBalance;
 }
 
 
-void ShowClientsList() {
+void ShowTotalBalances() {
 
 
 	vector<clsBankClient> ClientsList = clsBankClient::GetClientsList();
-
+	double TotalBalance = clsBankClient::GetTotalBalances();
 	cout << "\n---------------------------------------------------------------------------------------------------\n";
-	cout << "| " << left << setw(15) << "Accout Number";
-	cout << "| " << left << setw(20) << "Client Name";
-	cout << "| " << left << setw(12) << "Phone";
-	cout << "| " << left << setw(20) << "Email";
-	cout << "| " << left << setw(10) << "Pin Code";
+	cout << "| " << left << setw(15) << "Account Number";
+	cout << "| " << left << setw(40) << "Client Name";
 	cout << "| " << left << setw(12) << "Balance";
 	cout << "\n---------------------------------------------------------------------------------------------------\n";
 
@@ -40,19 +34,20 @@ void ShowClientsList() {
 	
 		for (clsBankClient& C : ClientsList) {
 			cout << endl;
-			PrintClientRecordLine(C);
+			PrintClientRecordBalanceLine(C);
 			
 		}
-		
+	
 	}
 
 	cout << "\n\n----------------------------------------------------------------------------------------------------\n";
-
+	cout << endl <<"\t\t\t\t" << "Total Balance : " << TotalBalance << endl;
+	cout << "\t\t\t\t" << clsString::NumberToText(TotalBalance) << endl << endl << endl;
 }
 
 
 int main()
 {
-	ShowClientsList();
+	ShowTotalBalances();
 	
 }
