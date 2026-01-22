@@ -16,10 +16,11 @@ private :
 	string _PinCode;
 	float _AccountBalance;
 	enMode _Mode;
-	static clsBankClient _ConvertLinetoClientObject(string Line , string Delim = "#//#") {
-		
+
+
+	static clsBankClient _ConvertLinetoClientObject(string Line, string Delim = "#//#") {
 		vector<string> vClient = clsString::Split(Line, Delim);
-		
+
 		return clsBankClient(
 			enMode::UpdateMode,
 			vClient[0], // Account Number
@@ -31,23 +32,102 @@ private :
 			stod(vClient[6])// Account Balance
 		);
 	}
+
+	static string _ConvertClientObjectToLine(clsBankClient Client, string Separator = "#//#") {
+		string Line = "";
+		Line += Client.FirstName + Separator;      // vClient[0]
+		Line += Client.LastName + Separator;       // vClient[1]
+		Line += Client.Email + Separator;          // vClient[2]
+		Line += Client.Phone + Separator;          // vClient[3]
+		Line += Client.AccountNumber + Separator;  // vClient[4]
+		Line += Client.PinCode + Separator;        // vClient[5]
+		Line += to_string(Client.AccountBalance);  // vClient[6]
+		return Line;
+	}
+
 	static clsBankClient _GetEmptyClientObject() {
 		return clsBankClient(enMode::EmptyMode, "", "", "", "", "", "", 0);
 	}
+
+	static void _SaveClientsDataToFile(vector<clsBankClient> vContainingClientData) {
+	
+		fstream MyFile;
+		MyFile.open("Clients.txt", ios::out);//Write mode it will delete all data and write new data the passes by vector.
+	
+		string DataLine;
+		if (MyFile.is_open()) {
+		
+		
+			for (clsBankClient C : vContainingClientData) {
+            			
+				DataLine = _ConvertClientObjectToLine(C , "#//#");
+				
+				MyFile << DataLine << endl;
+			}
+			MyFile.close();
+
+		}
+	
+	}
+
+	static vector<clsBankClient> _LoadClientsDataFromFile() {
+	
+		fstream MyFile;
+		MyFile.open("Clients.txt", ios::in);//Read Only Mode In file
+
+		vector<clsBankClient> vClients;
+		
+
+		if (MyFile.is_open()) {
+			string Line;
+			while (getline(MyFile, Line)) {
+
+				clsBankClient Client = _ConvertLinetoClientObject(Line);
+
+				vClients.push_back(Client);
+
+			}
+
+			MyFile.close();
+		}
+
+		return vClients;
+	}
+	
+	void _Update() {
+
+		vector<clsBankClient> _vClient = _LoadClientsDataFromFile();
+
+		for (clsBankClient& C : _vClient) {
+
+			if (C.AccountNumber == AccountNumber) {
+				C = *this;
+				break; //I used break for time and also the Account Number Will be unique Number fro each client.
+			}
+		}
+		_SaveClientsDataToFile(_vClient);
+	}
+
+
 public:
 	bool IsEmpty() {
 
 		return (_Mode == enMode::EmptyMode);
 	
 	}
-	clsBankClient(enMode Mode ,string FirstName, string LastName, string Email, string Phone, string AccountNumber, string PinCode, double AccountBalance)
-		: clsPerson(FirstName, LastName, Email, Phone)
+	clsBankClient(enMode Mode, string FirstName, string LastName,
+		string Email, string Phone, string AccountNumber, string PinCode,
+		float AccountBalance) :
+		clsPerson(FirstName, LastName, Email, Phone)
+
 	{
 		_Mode = Mode;
 		_AccountNumber = AccountNumber;
 		_PinCode = PinCode;
 		_AccountBalance = AccountBalance;
+
 	}
+
 
 	void SetAccountNumber(string AccountNumber) {
 		_AccountNumber = AccountNumber;
@@ -85,7 +165,7 @@ public:
 
 	void Print() {
 
-		cout << "Name              :  " << clsPerson::GetFullName() << endl;
+		cout << "\nName              :  " << clsPerson::GetFullName() << endl;
 		cout << "Account Number    :  " << _AccountNumber << endl;
 		cout << "Phone Number      :  " << clsPerson::GetPhone() << endl;
 		cout << "Email             :  " << clsPerson::GetEmail() << endl;
@@ -118,7 +198,7 @@ public:
 						
 			MyFile.close();
 		}
-	
+	//Here it will return enum failed .
 		return _GetEmptyClientObject();
 	}
 
@@ -151,11 +231,42 @@ public:
 	}
 
 
- bool IsClientExit() {
+
+  static bool IsClientExist(string AccountNumber) {
 	
-	 return (!IsEmpty());
+	  clsBankClient Client = clsBankClient::Find(AccountNumber);
+
+	  //This Will cheek the mode is ot empty or not that comes from Find Method.
+	 return (!Client.IsEmpty());
 	
 }
+
+
+  enum enSaveResult { svFailEmptyObject = 0 , svSuccessed = 1};
+
+
+  //This method to save client data to file.
+  enSaveResult Save() {
+  
+  
+	  switch (_Mode) {
+	  //If the client object empty i will not save it in the file cuz i dont want an empty client in file.
+	  case  enMode::EmptyMode:
+      
+		  return enSaveResult::svFailEmptyObject;
+
+	  case enMode::UpdateMode:
+
+		  _Update();
+
+		  return enSaveResult::svSuccessed;
+	  
+	  
+	  
+	  }
+  
+  
+  }
 
 };
 
