@@ -38,7 +38,7 @@ public:
 	static int  ReadIntNumber(string AskingMessage ,string ErrorMessage = "Invalid double Number! ") {
 	
 		int Number;
-		cout << AskingMessage << endl;
+		cout << AskingMessage;
 
 		//here in the condition for the while loop it will Read the Number and check if the user entered anything except int it will give fail false. 
 		//then it will give the result if fail or success true or false if true be(!)this will go out of the loop and continue.
@@ -52,7 +52,7 @@ public:
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 			
-			cout << ErrorMessage << endl;
+			cout << ErrorMessage ;
 
 		}
 		return Number;
