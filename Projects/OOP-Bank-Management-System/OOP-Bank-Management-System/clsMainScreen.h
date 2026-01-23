@@ -6,6 +6,7 @@
 #include <iomanip>
 #include "clsClientListScreen.h"
 #include "clsAddNewClientScreen.h"
+#include "clsDeleteClientScreen.h"
 using namespace std;
 class clsMainScreen : protected clsScreen
 {
@@ -19,7 +20,7 @@ class clsMainScreen : protected clsScreen
 
 
     static int _ReadChoiceNumber() {
-        int Choice = clsInputValidate::ReadIntNumberBetween(1,8,"\t\t\t\t\tInvalid!! Enter Number Between 1 to 8 : " ,"\t\t\t\t\tPlease Enter Number Between 1 to 8 :");
+        int Choice = clsInputValidate::ReadIntNumberBetween(1,8,"\t\t\t\t\tInvalid!! Enter Number Between 1 to 8 : " ,"\t\t\t\t\tPlease Enter Number Between 1 to 8 : ");
     
         return Choice;
     
@@ -102,8 +103,7 @@ class clsMainScreen : protected clsScreen
     }
     
     static  void _ShowDeleteScreen() {
-        cout << "Show Delete Client Screen Will Be Here ....";
-
+        clsDeleteClientScreen::ShowDeleteClient();
     }
     
     static void _ShowUpdateScreen() {
