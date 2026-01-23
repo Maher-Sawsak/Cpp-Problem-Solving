@@ -23,6 +23,13 @@ class clsMainScreen : protected clsScreen
 
     };
 
+    enum enTransactionMenueOption {
+
+        Deposit = 1, Withdraw = 2, TotalBalance = 3,GoBackToMainMenue =4
+    };
+
+
+
 
     static int _ReadChoiceNumber() {
         int Choice = clsInputValidate::ReadIntNumberBetween(1,8,"\t\t\t\t\tInvalid!! Enter Number Between 1 to 8 : " ,"\t\t\t\t\tPlease Enter Number Between 1 to 8 : ");
@@ -94,6 +101,91 @@ class clsMainScreen : protected clsScreen
 
     }
 
+    //-------transaction menue.
+
+    static void _GetDepositScreen() {
+        cout << "\nDeposit Screen Will Be here...\n";
+    }
+
+    static void _GetWithdrawScreen() {
+        cout << "\nWithdraw Screen Will Be here...\n";
+    }
+    
+    static void _GetTotalBalanceScreen() {
+        cout << "\Total Balance Screen Will Be here...\n";
+    }
+
+    static void _GoBackToTransactionMenue() {
+        cout << "\n\nPress any key to go back to transaction menue";
+        system("Pause>0");
+        _ShowTransactionsMenue();
+
+    }
+
+    static void _PerformTransactionMenueOption(enTransactionMenueOption Choice) {
+
+        switch(Choice)
+        {
+
+        case enTransactionMenueOption::Deposit:
+            system("cls");
+            _GetDepositScreen();
+            _GoBackToTransactionMenue();
+             break;
+
+
+
+             case enTransactionMenueOption::Withdraw :
+            system("cls");
+            _GetWithdrawScreen();
+            _GoBackToTransactionMenue();
+            break;
+
+
+
+             case enTransactionMenueOption::TotalBalance:
+            system("cls");
+            _GetTotalBalanceScreen();
+            _GoBackToTransactionMenue();
+            break;
+
+             case enTransactionMenueOption::GoBackToMainMenue:
+                 system("cls");
+                 ShowMainMenue();
+                 break;
+        }
+
+
+
+
+
+    }
+
+    static void _ShowTransactionsMenue() {
+    
+        system("cls");
+        _DrawScreenHeader("Transaction Screen");
+
+ 
+        cout<< setw(37) <<" " << setw(37) << left << "------------------------------" << endl;
+        cout <<setw(37) << " " << setw(37) << left << "   Transaction Menue." << endl;
+                            
+        cout << setw(37) << " " << setw(37) << left << "------------------------------" << endl;
+                            
+        cout  << setw(37) << " " << setw(37) << left << "[1] Deposit ." << endl;
+        cout << setw(37) << " " << setw(37) << left << "[2] Withdraw ." << endl;
+        cout << setw(37) << " " << setw(37) << left << "[3] Total Balance ." << endl;
+        cout << setw(37) << " " << setw(37) << left << "[4] Main Menue ." << endl;
+        cout << setw(37) << " " << setw(37) << left << "------------------------------" << endl;
+
+        _PerformTransactionMenueOption((enTransactionMenueOption)clsInputValidate::ReadIntNumberBetween(1, 8, "\t\t\t\t\tInvalid!! Enter Number Between 1 to 4 : ", "\t\t\t\t\tPlease Enter Number Between 1 to 4 : "));
+    
+    
+    
+    }
+
+
+
 
 
     //...It will be done soon all show will be here and will be full soon.
@@ -122,8 +214,8 @@ class clsMainScreen : protected clsScreen
     }
     
     static void _ShowTransactionsMenueScreen() {
-        cout << "Show Show Transactions Menue Screen Will Be Here ....";
-
+       // cout << "Show Show Transactions Menue Screen Will Be Here ....";
+        _ShowTransactionsMenue();
     }
     
     static  void _ShowManageUsers() {
