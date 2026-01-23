@@ -133,6 +133,20 @@ private :
 	}
 
 public:
+
+	//I will not use it, Becase no UI related code iside object.
+	/*void Print() {
+
+		cout << "\nName              :  " << clsPerson::GetFullName() << endl;
+		cout << "Account Number    :  " << _AccountNumber << endl;
+		cout << "Phone Number      :  " << clsPerson::GetPhone() << endl;
+		cout << "Email             :  " << clsPerson::GetEmail() << endl;
+		cout << "Pin Code          :  " << _PinCode << endl;
+		cout << "Account Balance   :  " << _AccountBalance << endl;
+
+	}*/
+
+
 	bool IsEmpty() {
 
 		return (_Mode == enMode::EmptyMode);
@@ -186,16 +200,7 @@ public:
 	_declspec(property(get = GetAccountBalance, put = SetAccountBalance)) float AccountBalance;
 
 
-	void Print() {
 
-		cout << "\nName              :  " << clsPerson::GetFullName() << endl;
-		cout << "Account Number    :  " << _AccountNumber << endl;
-		cout << "Phone Number      :  " << clsPerson::GetPhone() << endl;
-		cout << "Email             :  " << clsPerson::GetEmail() << endl;
-		cout << "Pin Code          :  " << _PinCode << endl;
-		cout << "Account Balance   :  " << _AccountBalance << endl;
-
-	}
 
 	static clsBankClient Find(string AccountNumber) {
 			
