@@ -362,11 +362,16 @@ public:
   }
 
 
-  void Withdraw(double Amount) {
+  bool Withdraw(double Amount) {
+	  if (Amount > AccountBalance) {
+		  return false;
+	  }
 
 	  AccountBalance -= Amount;
 	  Save();
-  
+	  return true;
+
+
   }
 
 
