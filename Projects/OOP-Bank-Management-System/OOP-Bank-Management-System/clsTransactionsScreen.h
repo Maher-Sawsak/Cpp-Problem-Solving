@@ -7,6 +7,7 @@
 #include"clsMainScreen.h"
 #include <iomanip>
 #include "clsDepositScreen.h"
+#include "clsWithdrawScreen.h"
 class clsTransactionsScreen : protected clsScreen
 {
     enum enTransactionMenueOption {
@@ -25,7 +26,8 @@ class clsTransactionsScreen : protected clsScreen
     }
 
     static void _GetWithdrawScreen() {
-        cout << "\nWithdraw Screen Will Be here...\n";
+        clsWithdrawScreen::ShowWithdrawScreen();
+
     }
 
     static void _ShowTotalBalanceScreen() {
