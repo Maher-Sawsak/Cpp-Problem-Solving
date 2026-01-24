@@ -6,6 +6,7 @@
 #include "clsInputValidate.h"
 #include"clsMainScreen.h"
 #include <iomanip>
+#include "clsDepositScreen.h"
 class clsTransactionsScreen : protected clsScreen
 {
     enum enTransactionMenueOption {
@@ -20,7 +21,7 @@ class clsTransactionsScreen : protected clsScreen
 
     }
     static void _GetDepositScreen() {
-        cout << "\nDeposit Screen Will Be here...\n";
+        clsDepositScreen::ShowDepositScreen();
     }
 
     static void _GetWithdrawScreen() {
