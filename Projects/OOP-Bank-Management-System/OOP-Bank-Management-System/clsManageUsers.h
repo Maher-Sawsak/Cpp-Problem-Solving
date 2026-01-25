@@ -10,6 +10,7 @@
 #include "clsAddNewUserScreen.h"
 #include "clsDeleteUserScreen.h"
 #include "clsUpdateUserScreen.h"
+#include "clsFindUserScreen.h"
 class clsManageUsers : protected clsScreen
 {
 
@@ -19,7 +20,6 @@ class clsManageUsers : protected clsScreen
         eListUsers = 1, eAddNewUser = 2, eDeleteUser = 3,
         eUpdateUser = 4, eFindUser = 5, eMainMenue = 6
     };
-
 
     static void _GoBackToManageUserMenue() {
         cout << "\n\nPress any key to go back to manage user menue...";
@@ -57,8 +57,8 @@ class clsManageUsers : protected clsScreen
     }
 
     static void _ShowFindUserScreen() {
-        cout << "Find User Will Be Here :-) ";
-
+      
+        clsFindUserScreen::ShowFindUserScreen();
 
     }
 
@@ -111,16 +111,10 @@ class clsManageUsers : protected clsScreen
 
 
 
-
-
-
-
-
-
-
-
-
 public:
+
+
+
 
     static void ShowManageUsersMenue() {
 
