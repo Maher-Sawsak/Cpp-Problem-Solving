@@ -9,6 +9,7 @@
 #include"clsUsersListScreen.h"
 #include "clsAddNewUserScreen.h"
 #include "clsDeleteUserScreen.h"
+#include "clsUpdateUserScreen.h"
 class clsManageUsers : protected clsScreen
 {
 
@@ -50,8 +51,8 @@ class clsManageUsers : protected clsScreen
     }
 
     static void _ShowUpdateUserScreen() {
-        cout << "Update User Will Be Here : -) ";
-
+        //cout << "Update User Will Be Here : -) ";
+        clsUpdateUserScreen::ShowUpdateClient();
 
     }
 
