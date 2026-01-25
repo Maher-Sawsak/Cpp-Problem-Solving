@@ -8,6 +8,7 @@
 #include <iomanip>
 #include"clsUsersListScreen.h"
 #include "clsAddNewUserScreen.h"
+#include "clsDeleteUserScreen.h"
 class clsManageUsers : protected clsScreen
 {
 
@@ -44,7 +45,7 @@ class clsManageUsers : protected clsScreen
     }
 
     static void _ShowDeleteUserScreen() {
-        cout << "Delete User Will Be Here :-) ";
+        clsDeleteUserScreen::ShowDeleteClient();
 
     }
 
