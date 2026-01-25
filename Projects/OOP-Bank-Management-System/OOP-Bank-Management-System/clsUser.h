@@ -8,7 +8,7 @@
 #include "clsScreen.h"
 #include"clsPerson.h"
 
-class clsUser : clsPerson
+class clsUser : public clsPerson
 {
 	enum enMode { EmptyMode = 0, UpdateMode = 1, AddNewMode = 2 };
 
@@ -325,13 +325,13 @@ public:
     }
 
 
-    static clsUser GetAddNewClientObject(string UserName) {
+    static clsUser GetAddNewUserObject(string UserName) {
         //This will take the Account Number And put The Mode for it, because i need it in the save method to know, which function should i use?.
         return clsUser(enMode::AddNewMode, "", "", "", "", UserName, "", 0);
     }
 
 
-    static vector <clsUser> GetClientsList() {
+    static vector <clsUser> GetUsersList() {
 
         return _LoadUsersDataFromFile();
     }
