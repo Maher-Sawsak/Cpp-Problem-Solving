@@ -7,7 +7,7 @@
 #include"clsMainScreen.h"
 #include <iomanip>
 #include"clsUsersListScreen.h"
-
+#include "clsAddNewUserScreen.h"
 class clsManageUsers : protected clsScreen
 {
 
@@ -39,8 +39,7 @@ class clsManageUsers : protected clsScreen
     }
 
     static void _ShowAddNewUserScreen() {
-        cout << "Add New User Will Be Here :-) ";
-
+        clsAddNewUserScreen::ShowAddNewUserScreen();
 
     }
 
