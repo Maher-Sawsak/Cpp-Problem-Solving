@@ -11,7 +11,7 @@
 #include "clsFindClientScreen.h"
 #include "clsTransactionsScreen.h"
 #include "clsManageUsers.h"
-
+#include "Global.h"
 
 using namespace std;
 class clsMainScreen : protected clsScreen
@@ -91,7 +91,7 @@ class clsMainScreen : protected clsScreen
 
         case enMainMenueOptions::eExit:
             system("cls");
-            _ShowEndScreen();
+            _Logout();
             break;
 
         }
@@ -136,12 +136,23 @@ class clsMainScreen : protected clsScreen
         clsManageUsers::ShowManageUsersMenue();
     }
 
-    static void _ShowEndScreen() {
+    static void _Logout() {
     
-        cout << "\n\nThe Programm Is End :-)\n\n";
+        /*
+        if I wrote like this line to call login again after logout meaning press number 8
+        it will give us an erroe at run time the error called (call stack) or (Circular Reference) 
+        because will make loop A class calling B class and B class also calling A. this is give run time error. 
+
+        The cause of the error
+        clsLoginScreen::ShowLoginScreen();
+
+        
+        
+        */
+
+        CurrentUser = clsUser::Find("", "");
     }
 
-//--------- 
 
 
 public:
