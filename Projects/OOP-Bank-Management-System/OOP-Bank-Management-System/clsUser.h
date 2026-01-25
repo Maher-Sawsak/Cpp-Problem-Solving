@@ -137,7 +137,11 @@ class clsUser : public clsPerson
 
 
 public:
-
+   
+    enum enPermissions {
+        eAll = -1, pListClients = 1, pAddNewClient = 2, pDeleteClient = 4,
+        pUpdateClients = 8, pFindClient = 16, pTranactions = 32, pManageUsers = 64
+    };
 
 
     clsUser(enMode Mode, string FirstName, string LastName,
@@ -288,7 +292,7 @@ public:
     }
 
 
-    enum enSaveResult { svFailEmptyObject = 0, svSuccessed = 1, svFaildAccountNumberExists = 2 };
+    enum enSaveResult { svFailEmptyObject = 0, svSuccessed = 1, svFaildUserNameExists = 2 };
 
 
     //This method to save client data to file.
@@ -310,7 +314,7 @@ public:
         case enMode::AddNewMode:
             //If The client accountnumber exist so i will return false he can't add client with same account number.
             if (IsUserExist(UserName)) {
-                return enSaveResult::svFaildAccountNumberExists;
+                return enSaveResult::svFaildUserNameExists;
             }
             else {
                 // Change mode to UpdateMode after successful creation to prevent 
