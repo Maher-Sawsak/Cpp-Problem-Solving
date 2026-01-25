@@ -69,9 +69,10 @@ class clsTransactionsScreen : protected clsScreen
             _GoBackToTransactionMenue();
             break;
 
-        case enTransactionMenueOption::GoBackToMainMenue:
-            cout << "do nothing here the main screen will handle it :-) ";
-            break;
+        case enTransactionMenueOption::GoBackToMainMenue: {
+            // we dont need any code here will handiling by the ShowMainMenue.
+            }
+           
         }
 
 
