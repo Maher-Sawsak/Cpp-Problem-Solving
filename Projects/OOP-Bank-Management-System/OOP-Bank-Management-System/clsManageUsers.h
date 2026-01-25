@@ -6,7 +6,7 @@
 #include "clsInputValidate.h"
 #include"clsMainScreen.h"
 #include <iomanip>
-
+#include"clsUsersListScreen.h"
 
 class clsManageUsers : protected clsScreen
 {
@@ -34,7 +34,8 @@ class clsManageUsers : protected clsScreen
 
     static void _ShowListUserScreen() {
 
-        cout << "List User Will Be Here :-) ";
+       // cout << "List User Will Be Here :-) ";
+        clsUsersListScreen::ShowUserListScreen();
     }
 
     static void _ShowAddNewUserScreen() {
