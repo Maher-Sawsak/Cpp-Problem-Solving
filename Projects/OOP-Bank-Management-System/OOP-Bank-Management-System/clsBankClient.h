@@ -326,7 +326,7 @@ public:
   
   }
 
-
+  
   static clsBankClient GetAddNewClientObject(string AccountNumber) {
       //This will take the Account Number And put The Mode for it, because i need it in the save method to know, which function should i use?.
 	  return clsBankClient(enMode::AddNewMode, "", "", "", "", AccountNumber ,"", 0);
@@ -373,6 +373,21 @@ public:
 
 
   }
+
+
+  bool Transfer(double Amount, clsBankClient & DestinationClient) {
+  
+  
+	  if (Amount > AccountBalance) {
+		  return false;
+	  }
+  
+	  Withdraw(Amount);
+	  DestinationClient.Deposit(Amount);
+	  return true;
+    
+  }
+
 
 
 };
