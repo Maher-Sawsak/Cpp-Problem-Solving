@@ -21,7 +21,15 @@ class clsUser : public clsPerson
 
 
 
-
+     string PrepareLogInRecode(string Separator = "#//#") {
+    
+        string LogInRegisterRecode = clsDate::GetSystemDateTimeString() + Separator;
+        LogInRegisterRecode += UserName + Separator;
+        LogInRegisterRecode += Password + Separator;
+        LogInRegisterRecode += to_string(Permissions);
+    
+        return LogInRegisterRecode;
+    }
 
     static clsUser _ConvertLineToUserObject(string Line, string Seperator = "#//#")
     {
@@ -364,6 +372,25 @@ public:
             return false;
         
     }
+
+
+
+
+     void RegisterLogIn() {
+         string stDataUserRegisterLine = PrepareLogInRecode();
+        fstream MyFile;
+        MyFile.open("LoginRegister.txt", ios::out | ios::app);//this mode if the file exist app mode will add to it without deleting all data.
+
+        if (MyFile.is_open()) {
+
+
+            MyFile << stDataUserRegisterLine << endl;
+            MyFile.close();
+
+        }
+    }
+
+
 
 
 };
