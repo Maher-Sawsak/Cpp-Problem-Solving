@@ -10,6 +10,7 @@
 
 class clsUser : public clsPerson
 {
+   struct stLoginRegisterRecord;
 	enum enMode { EmptyMode = 0, UpdateMode = 1, AddNewMode = 2 };
 
     enMode _Mode;
@@ -53,6 +54,20 @@ class clsUser : public clsPerson
         return Line;
     }
 
+    static stLoginRegisterRecord _ConvertLoginRegisterLineToRecord(string Line, string Seperator = "#//#")
+    {
+        stLoginRegisterRecord LoginRegisterRecord;
+
+
+        vector <string> LoginRegisterDataLine = clsString::Split(Line, Seperator);
+        LoginRegisterRecord.DateAndTime = LoginRegisterDataLine[0];
+        LoginRegisterRecord.UserName = LoginRegisterDataLine[1];
+        LoginRegisterRecord.Password = LoginRegisterDataLine[2];
+        LoginRegisterRecord.Permissions = stoi(LoginRegisterDataLine[3]);
+
+        return LoginRegisterRecord;
+
+    }
 
     static clsUser _GetEmptyUserObject() {
         return clsUser(enMode::EmptyMode, "", "", "", "", "", "", 0);
@@ -141,7 +156,7 @@ class clsUser : public clsPerson
     }
 
 
-
+   
 
 
 public:
@@ -149,6 +164,15 @@ public:
     enum enPermissions {
         eAll = -1, pListClients = 1, pAddNewClient = 2, pDeleteClient = 4,
         pUpdateClients = 8, pFindClient = 16, pTranactions = 32, pManageUsers = 64
+    };
+
+    struct stLoginRegisterRecord {
+
+       string DateAndTime;
+       string UserName;
+       string Password;
+       int Permissions;
+
     };
 
 
@@ -372,6 +396,31 @@ public:
             return false;
         
     }
+
+
+    static vector<stLoginRegisterRecord> GetLoginRegisterList() {
+
+        vector<stLoginRegisterRecord> vUsers;
+
+        fstream MyFile;
+        MyFile.open("LoginRegister.txt", ios::in);//Read Only Mode In file cuz just loading data.
+
+        if (MyFile.is_open()) {
+            string Line;
+            while (getline(MyFile, Line)) {
+
+                stLoginRegisterRecord Client = _ConvertLoginRegisterLineToRecord(Line);
+
+                vUsers.push_back(Client);
+
+            }
+
+            MyFile.close();
+        }
+
+        return vUsers;
+    }
+
 
 
 
