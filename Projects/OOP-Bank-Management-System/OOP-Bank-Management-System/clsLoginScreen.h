@@ -7,40 +7,49 @@
 #include "Global.h"
 class clsLoginScreen : protected clsScreen
 {
-	static void _Login() {
-
+	static bool _Login() {
+		short LoginFailedCounter = 0;
 		bool LoginFailed = false;
-		string UserName, Password;
-		
-		do {
+        string UserName, Password;
 
-			if (LoginFailed) {
-				cout << "\nInvalid User Name OR Password!!\n";
-			
-			}
+       do {
 
-			cout << "\nPlease Enter User Name ? ";
-			cin >> UserName;
+				if (LoginFailed) {
+					LoginFailedCounter++;
+					cout << "\nInvalid User Name OR Password!!\n";
+					cout << "You have " << 3 - LoginFailedCounter << " Trial(s) To login\n";
+					
+				}
 
-			cout << "\nPlease Enter Password ? ";
-			cin >> Password;
+				
+				if (LoginFailedCounter == 3) {
+					cout << "\n\nYou are locked after 3 failed trials\n";
+					return false;
+				}
 
-			//find it will return either full object or empty if its not Exist.
-			CurrentUser = clsUser::Find(UserName, Password);
-			LoginFailed = CurrentUser.IsEmpty();
+				cout << "\nPlease Enter User Name ? ";
+				cin >> UserName;
 
-		} while (LoginFailed);
+				cout << "\nPlease Enter Password ? ";
+				cin >> Password;
 
-		clsMainScreen::ShowMainMenue();
-	}
+				//find it will return either full object or empty if its not Exist.
+				CurrentUser = clsUser::Find(UserName, Password);
+				LoginFailed = CurrentUser.IsEmpty();
+
+			} while (LoginFailed);
+
+			clsMainScreen::ShowMainMenue();
+		}
+	
 
 public:
 
-	static void ShowLoginScreen() {
+	static bool ShowLoginScreen() {
 	
 		_DrawScreenHeader("Login Screen");
 
-		_Login();
+		return _Login();
 	
 	}
 
