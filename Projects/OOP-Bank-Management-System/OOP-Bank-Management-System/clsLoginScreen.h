@@ -38,19 +38,19 @@ class clsLoginScreen : protected clsScreen
 				LoginFailed = CurrentUser.IsEmpty();
 
 			} while (LoginFailed);
-
+	        CurrentUser.RegisterLogIn();
 			clsMainScreen::ShowMainMenue();
 		}
-	
+
 
 public:
 
 	static bool ShowLoginScreen() {
 	
 		_DrawScreenHeader("Login Screen");
-
-		return _Login();
 	
+			return _Login();
+		
 	}
 
 
