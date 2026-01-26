@@ -342,6 +342,28 @@ public:
 
 
 
+    bool CheckStatusPermission(clsUser::enPermissions SourcePermission) {
+        /* This function checks if the user has a specific permission.
+   It uses Bitwise AND (&) to see if the 'SourcePermission'
+   is included inside the user's total permissions bitmask.
+*/
+
+        /*
+        another way to solve but the other is more readable fot another developers.
+        
+        return (this->Permissions == clsUser::enAll) || ((this->Permissions & SourcePermission) == SourcePermission);
+        */
+
+        if (this->Permissions == SourcePermission)      
+              return true;
+   
+        if ((this->Permissions & SourcePermission) == SourcePermission)
+              return true;
+
+        else
+            return false;
+        
+    }
 
 
 };
