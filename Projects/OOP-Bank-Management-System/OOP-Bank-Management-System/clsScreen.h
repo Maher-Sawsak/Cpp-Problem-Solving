@@ -3,13 +3,16 @@
 #include <iostream>
 #include"Global.h"
 #include "clsUser.h"
+#include "clsDate.h"
 using namespace std;
 
 
 class clsScreen
 {
 
-public:
+
+protected:
+
 	static void _DrawScreenHeader(string Title ,string SubTitle =" ") {
 	
 		cout << "\n\t\t\t\t-----------------------------------------------------------\n";
@@ -21,6 +24,11 @@ public:
 		}
 		cout << "\n\t\t\t\t----------------------------------------------------------\n\n";
 		 
+		cout << " \t\t\t\tUser : " <<CurrentUser.UserName <<"\n";
+		// I Used Anonymous Object.
+		//when I write the name of class and after it () like {{{ clsDate() }}} it menas, hi compiler now go and create an object without name temp object.
+		//after the line finish the object the temp object will be deleted.
+		cout << "\n \t\t\t\tDate : " << clsDate::DateToString(clsDate()) << "\n\n\n";
 
 	
 	}
