@@ -18,6 +18,9 @@ int main()
 	//this while solving call stack error when i logout it will now show login screen again.
 
 	while (true) {
-		clsLoginScreen::ShowLoginScreen();
+		if (!clsLoginScreen::ShowLoginScreen()) {
+			return 0;
+		}
 	}
+
 }
