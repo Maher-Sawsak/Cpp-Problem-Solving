@@ -34,6 +34,11 @@ public:
 
 	static void AddNewClient() {
 
+		if (!CheckAccessRights(clsUser::enPermissions::pAddNewClient)) {
+			return;
+		}
+
+
 	    //this from screen class will print the title in the top.
 		_DrawScreenHeader("Add New Client Screen");
 

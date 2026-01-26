@@ -39,6 +39,9 @@ static void _ReadClientInfo(clsBankClient& Client) {
 public:
 
 	static void ShowUpdateClient() {
+		if (!CheckAccessRights(clsUser::enPermissions::pUpdateClients)) {
+			return;
+		}
 
 
 		_DrawScreenHeader("Update Client Screen");

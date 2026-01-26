@@ -27,6 +27,9 @@ public:
     static void ShowClientsList()
     {
 
+        if (!CheckAccessRights(clsUser::enPermissions::pListClients)) {
+            return;
+        }
 
         vector <clsBankClient> vClients = clsBankClient::GetClientsList();
         string Title = "\t  Client List Screen";
