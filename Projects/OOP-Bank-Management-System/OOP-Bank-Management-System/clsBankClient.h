@@ -5,6 +5,7 @@
 #include <fstream>
 #include"clsString.h"
 #include"clsPerson.h"
+#include "clsDate.h"
 
 class clsBankClient : public clsPerson
 {
@@ -33,6 +34,35 @@ private :
 			vClient[5], // Phone
 			stod(vClient[6])// Account Balance
 		);
+	}
+
+	void _SaveTransferFDataTiFile(double Amount, clsBankClient  DestinationClient, string Separator = "#//#") {
+
+		fstream MyFile;
+		MyFile.open("Transfer.txt", ios::out | ios::app);
+
+		if (MyFile.is_open()) {
+
+			MyFile << _PrepareTransferLogRecord(Amount, DestinationClient, _AccountNumber) << endl;
+
+		}
+		MyFile.close();
+
+	}
+
+
+	string _PrepareTransferLogRecord(float Amount, clsBankClient DestinationClient,
+		string UserName, string Seperator = "#//#")
+	{
+		string TransferLogRecord = "";
+		TransferLogRecord += clsDate::GetSystemDateTimeString() + Seperator;
+		TransferLogRecord += AccountNumber + Seperator;
+		TransferLogRecord += DestinationClient.AccountNumber + Seperator;
+		TransferLogRecord += to_string(Amount) + Seperator;
+		TransferLogRecord += to_string(AccountBalance) + Seperator;
+		TransferLogRecord += to_string(DestinationClient.AccountBalance) + Seperator;
+		TransferLogRecord += UserName;
+		return TransferLogRecord;
 	}
 
 	static string _ConvertClientObjectToLine(clsBankClient Client, string Separator = "#//#") {
@@ -376,14 +406,15 @@ public:
 
 
   bool Transfer(double Amount, clsBankClient & DestinationClient) {
-  
-  
+
 	  if (Amount > AccountBalance) {
 		  return false;
 	  }
-  
+
 	  Withdraw(Amount);
 	  DestinationClient.Deposit(Amount);
+
+	  this->_SaveTransferFDataTiFile(Amount, DestinationClient);
 	  return true;
     
   }
