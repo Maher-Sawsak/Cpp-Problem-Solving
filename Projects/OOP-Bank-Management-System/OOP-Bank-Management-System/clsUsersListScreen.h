@@ -27,6 +27,7 @@ public :
     static void ShowUserListScreen() {
         vector <clsUser> vUsers;
         vUsers = clsUser::GetUsersList();
+        
 
         _DrawScreenHeader("User List Screen","\t    (" + to_string(vUsers.size()) + ") User(s).");
 

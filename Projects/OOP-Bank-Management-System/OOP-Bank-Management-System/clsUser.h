@@ -26,7 +26,7 @@ class clsUser : public clsPerson
     
         string LogInRegisterRecode = clsDate::GetSystemDateTimeString() + Separator;
         LogInRegisterRecode += UserName + Separator;
-        LogInRegisterRecode += Password + Separator;
+        LogInRegisterRecode += clsUtil::EncryptText(Password,4) + Separator;
         LogInRegisterRecode += to_string(Permissions);
     
         return LogInRegisterRecode;
@@ -38,7 +38,8 @@ class clsUser : public clsPerson
         vUserData = clsString::Split(Line, Seperator);
 
         return clsUser(enMode::UpdateMode, vUserData[0], vUserData[1], vUserData[2],
-            vUserData[3], vUserData[4], vUserData[5], stoi(vUserData[6]));
+            //Here will decrypty the user password to show it.
+            vUserData[3], vUserData[4], clsUtil::DecryptText(vUserData[5],4), stoi(vUserData[6]));
 
     }
 
@@ -49,7 +50,8 @@ class clsUser : public clsPerson
         Line += User.Email + Separator;          // vClient[2]
         Line += User.Phone + Separator;          // vClient[3]
         Line += User.UserName+ Separator;  // vClient[4]
-        Line += User.Password + Separator;        // vClient[5]
+        //--this will encrypt the password in the file.
+        Line += clsUtil::EncryptText(User.Password, 4) + Separator;        // vClient[5]
         Line += to_string(User.Permissions);  // vClient[6]
         return Line;
     }
@@ -62,7 +64,7 @@ class clsUser : public clsPerson
         vector <string> LoginRegisterDataLine = clsString::Split(Line, Seperator);
         LoginRegisterRecord.DateAndTime = LoginRegisterDataLine[0];
         LoginRegisterRecord.UserName = LoginRegisterDataLine[1];
-        LoginRegisterRecord.Password = LoginRegisterDataLine[2];
+        LoginRegisterRecord.Password = clsUtil::DecryptText(LoginRegisterDataLine[2],4);
         LoginRegisterRecord.Permissions = stoi(LoginRegisterDataLine[3]);
 
         return LoginRegisterRecord;
@@ -148,11 +150,12 @@ class clsUser : public clsPerson
             }
         }
         _SaveUsersDataToFile(vUsers);
+        
     }
     void _AddNew() {
 
         _AddDataLineToFile(_ConvertUserObjectToLine(*this));
-
+        
     }
 
 
@@ -277,7 +280,7 @@ public:
             while (getline(MyFile, Line)) {
 
                 clsUser User = _ConvertLineToUserObject(Line);
-
+                
                 if (User.UserName == UserName && User.Password == Password) {
 
                     MyFile.close();
@@ -340,7 +343,7 @@ public:
         case enMode::UpdateMode:
 
             _Update();
-
+            
             return enSaveResult::svSuccessed;
 
         case enMode::AddNewMode:

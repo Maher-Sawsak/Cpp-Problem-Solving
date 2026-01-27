@@ -37,7 +37,7 @@ public:
         cout << setw(8) << left << "" << "| " << left << setw(37) << "Date & Time";
         cout << "| " << left << setw(20) << "User Name";
         cout << "| " << left << setw(25) << "Password";
-        cout << "| " << left << setw(20) << "Permmisions";
+        cout << "| " << left << setw(20) << "Permissions";
         cout << setw(8) << left << "" << "\n\t_______________________________________________________";
         cout << "_________________________________________\n" << endl;
 

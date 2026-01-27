@@ -11,7 +11,7 @@ class clsTransferLogScreen : protected clsScreen
 
     static void _PrintTransferData(clsBankClient::stTransferLogRecord UserTransferLogData)
     {
-
+        
         cout << setw(8) << left << "" << "| " << setw(22) << left << UserTransferLogData.DateTime;
         cout << "| " << setw(11) << left << UserTransferLogData.SAccountNumber;
         cout << "| " << setw(11) << left << UserTransferLogData.DAccountNumber;
