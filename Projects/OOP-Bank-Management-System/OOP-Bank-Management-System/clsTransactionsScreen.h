@@ -10,15 +10,16 @@
 #include "clsWithdrawScreen.h"
 #include "clsTotalBalancesScreen.h"
 #include "clsTransferScreen.h"
+#include"clsTransferLogScreen.h"
 class clsTransactionsScreen : protected clsScreen
 {
     enum enTransactionMenueOption {
 
-        Deposit = 1, Withdraw = 2, TotalBalance = 3, Transfer = 4,GoBackToMainMenue = 5
+        Deposit = 1, Withdraw = 2, TotalBalance = 3, Transfer = 4 , TransferOperation = 5,GoBackToMainMenue = 6
     };
 
-   static int ReadTransactionsMenueOption() {
-        int Choice = clsInputValidate::ReadIntNumberBetween(1, 8, "\t\t\t\t\tInvalid!! Enter Number Between 1 to 4 ? ", "\t\t\t\t\tPlease Enter Number Between 1 to 4 ? ");
+   static int _ReadTransactionsMenueOption() {
+        int Choice = clsInputValidate::ReadIntNumberBetween(1, 8, "\t\t\t\t\tInvalid!! Enter Number Between 1 to 6 ? ", "\t\t\t\t\tPlease Enter Number Between 1 to 6 ? ");
 
         return Choice;
 
@@ -46,7 +47,10 @@ class clsTransactionsScreen : protected clsScreen
     static void _ShowTotalTransferScreen() {
         clsTransferScreen::ShowTotalTransferScreen();
     }
-
+    static void _ShowTransferLogScreen() {
+    
+        clsTransferLogScreen::ShowTransferLogScreen();
+    }
     static void _PerformTransactionMenueOption(enTransactionMenueOption Choice) {
 
         switch (Choice)
@@ -77,7 +81,11 @@ class clsTransactionsScreen : protected clsScreen
             _ShowTotalBalanceScreen();
             _GoBackToTransactionMenue();
             break;
-
+        case enTransactionMenueOption::TransferOperation:
+            system("cls");
+            _ShowTransferLogScreen();
+            _GoBackToTransactionMenue();
+            break;
         case enTransactionMenueOption::GoBackToMainMenue: {
             // we dont need any code here will handiling by the ShowMainMenue.
             }
@@ -112,10 +120,12 @@ public :
         cout << setw(42) << " " << setw(37) << left << "[2] Withdraw ." << endl;
         cout << setw(42) << " " << setw(37) << left << "[3] Total Balance ." << endl;
         cout << setw(42) << " " << setw(37) << left << "[4] Transfer ." << endl;
-        cout << setw(42) << " " << setw(37) << left << "[5] Main Menue ." << endl;
+        cout << setw(42) << " " << setw(37) << left << "[5] Transfer Log ." << endl;
+        cout << setw(42) << " " << setw(37) << left << "[6] Main Menue ." << endl;
         cout << setw(42) << " " << setw(37) << left << "------------------------------" << endl;
 
-        _PerformTransactionMenueOption((enTransactionMenueOption)clsInputValidate::ReadIntNumberBetween(1, 8, "\t\t\t\t\tInvalid!! Enter Number Between 1 to 4 : ", "\t\t\t\t\tPlease Enter Number Between 1 to 4 : "));
+        _PerformTransactionMenueOption((enTransactionMenueOption)_ReadTransactionsMenueOption());
+    
 
 
 
