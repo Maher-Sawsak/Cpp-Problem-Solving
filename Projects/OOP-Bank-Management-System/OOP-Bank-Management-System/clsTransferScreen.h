@@ -63,7 +63,7 @@ public:
 
 		if (Answer == 'y' || Answer == 'Y') {
 
-			if (Client1From.Transfer(Amount, Client2To)) {
+			if (Client1From.Transfer(Amount, Client2To , CurrentUser.UserName)) {
 			
 				cout << "\nTransfer Done Successfullly ! ";
 			}
