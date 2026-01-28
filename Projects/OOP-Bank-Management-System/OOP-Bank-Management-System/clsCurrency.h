@@ -29,7 +29,7 @@ class clsCurrency
 		CurrencyLine = CurrencyObject._Country + Separator;
 		CurrencyLine += CurrencyObject._CurrencyCode + Separator;
 		CurrencyLine += CurrencyObject._CurrencyName + Separator;
-		CurrencyLine += to_string(CurrencyObject._Rate) + Separator;
+		CurrencyLine += to_string(CurrencyObject._Rate);
 
 		return CurrencyLine;
 	}
