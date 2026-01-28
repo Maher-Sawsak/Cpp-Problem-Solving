@@ -4,6 +4,8 @@
 #include "clsUtil.h"
 #include"clsInputValidate.h"
 #include"clsScreen.h"
+#include "clsCurrenciesListScreen.h"
+
 class clsCurrencyScreen : protected clsScreen
 {
 	enum enCurrencyExhange { crListCurrencies = 1, crFindCurrency = 2, crUpdateCurrency = 3, crCurrencyCalculator = 4, crGoBackToMainMenue = 5 };
@@ -16,7 +18,7 @@ class clsCurrencyScreen : protected clsScreen
 	}
 
 	static int _ReadCurrencyMenueOption() {
-		int Choice = clsInputValidate::ReadIntNumberBetween(1, 8, "Invalid! Enter Number Between [1 to 5] : ", "Enter Number Between[1 to 5] : ");
+		int Choice = clsInputValidate::ReadIntNumberBetween(1, 8, "\t\t\t\t\t  Invalid! Enter Number Between [1 to 5] : ", "\t\t\t\t\t  Enter Number Between[1 to 5] : ");
 		return Choice;
 	}
 
@@ -24,8 +26,8 @@ class clsCurrencyScreen : protected clsScreen
 
 
 	static void _ShowListCurrencies() {
-		cout << " List Currencies Will Be Here...";
-	
+		//cout << " List Currencies Will Be Here...";
+		clsCurrenciesListScreen::ShowCurrenciesListScreen();
 	}
 	
 	static void _ShowFindCurrency() {
@@ -83,7 +85,7 @@ class clsCurrencyScreen : protected clsScreen
 				break;
 
 			case enCurrencyExhange::crGoBackToMainMenue:
-//ther will be no code here.
+             //ther will be no code here.
 				break;
 		
 		}
