@@ -1,11 +1,11 @@
 #pragma once
-#pragma once
 #include <iostream>
 #include <iomanip>
 #include "clsUtil.h"
 #include"clsInputValidate.h"
 #include"clsScreen.h"
 #include "clsCurrency.h"
+
 class clsFindCurrencyScreen : protected clsScreen
 {
 
