@@ -1,78 +1,76 @@
-🏦 Advanced Bank Management System (C++ / OOP)
-
-📌 Project Overview
-
-Developed by Maher Sawsak, this is a professional-grade Banking Management System built with C++. The project emphasizes a highly modular architecture, utilizing 45 distinct files to implement a strict Separation of Concerns between the core business logic and the user interface.
+\# 🏦 Advanced Bank Management System (C++ / OOP)
 
 
 
-🚀 Key Features
+\## 📌 Project Overview
 
-Modular Design: Structured with 45 headers and classes to ensure high maintainability and code clarity.
-
-
-
-Secure User Management: A robust system for managing user profiles and specific access permissions.
+Developed by \*\*Maher Sawsak\*\*, this is a professional-grade Banking Management System built with \*\*C++\*\*. The project emphasizes a highly modular architecture, utilizing \*\*45 distinct files\*\* to implement a strict \*\*Separation of Concerns\*\* between the core business logic and the user interface.
 
 
 
-Comprehensive Client Operations: Full CRUD (Create, Read, Update, Delete) functionality for bank clients.
+\## 🚀 Key Features
+
+\* \*\*Modular Design:\*\* Structured with \*\*45 headers and classes\*\* to ensure high maintainability and code clarity.
+
+\* \*\*Secure User Management:\*\* A robust system for managing user profiles and specific access permissions.
+
+\* \*\*Comprehensive Client Operations:\*\* Full CRUD (Create, Read, Update, Delete) functionality for bank clients.
+
+\* \*\*Financial Transaction Engine:\*\* Reliable handling of deposits, withdrawals, and account-to-account transfers.
+
+\* \*\*Currency Exchange Module:\*\* An integrated calculator for currency conversion with manageable exchange rates.
+
+\* \*\*Transaction Logging:\*\* Automated recording of every financial movement for audit and history tracking.
 
 
 
-Financial Transaction Engine: Reliable handling of deposits, withdrawals, and account-to-account transfers.
+\## 🔐 Security \& Architecture
+
+\* \*\*Data Encryption:\*\* A custom security layer that \*\*encrypts user passwords\*\* before they are saved to files. The data is only \*\*decrypted during runtime\*\* for authorized internal verification, ensuring sensitive information is never stored in plain text.
+
+\* \*\*OOP Principles:\*\* Deep integration of Inheritance, Encapsulation, and Polymorphism to create reusable and scalable code.
+
+\* \*\*File Persistence:\*\* Optimized data management using a flat-file database system across all 45 modules.
 
 
 
-Currency Exchange Module: An integrated calculator for currency conversion with manageable exchange rates.
+\## 📸 System Gallery
 
 
 
-Transaction Logging: Automated recording of every financial movement for audit and history tracking.
+\### 1. Security Gateway (Login)
+
+!\[Login Screen](./screenshots/LogIn.png)
+
+\*Authentication interface for secure system access.\*
 
 
 
-🔐 Security \& Architecture
+\### 2. Main Dashboard
 
-Data Encryption: A custom security layer that encrypts user passwords before they are saved to files. The data is only decrypted during runtime for authorized internal verification, ensuring sensitive information is never stored in plain text.
+!\[Main Screen](./screenshots/MainScreen.png)
 
-
-
-OOP Principles: Deep integration of Inheritance, Encapsulation, and Polymorphism to create reusable and scalable code.
+\*The central navigation hub for all banking modules.\*
 
 
 
-File Persistence: Optimized data management using a flat-file database system across all 45 modules.
+\### 3. Transaction Management
+
+!\[Transaction Screen](./screenshots/TransactionScreen.png)
+
+\*Dedicated center for financial transfers and logging.\*
 
 
 
-📸 System Gallery
+\### 4. User Permissions
 
-1\. Security Gateway (Login)
+!\[User Permissions](./screenshots/UserPermission.png)
 
-Authentication interface for secure system access.
-
-
-
-2\. Main Dashboard
-
-The central navigation hub for all banking modules.
+\*Granular access control system for managing user roles.\*
 
 
 
-3\. Transaction Management
+---
 
-Dedicated center for financial transfers and logging.
-
-
-
-4\. User Permissions
-
-Granular access control system for managing user roles.
-
-
-
-Developed by: Maher Sawsak
-
-
+\*\*Developed by:\*\* Maher Sawsak
 
