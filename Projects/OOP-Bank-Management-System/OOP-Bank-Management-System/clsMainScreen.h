@@ -32,7 +32,7 @@ class clsMainScreen : protected clsScreen
 
 
     static int _ReadChoiceNumber() {
-        int Choice = clsInputValidate::ReadIntNumberBetween(1,9,"\t\t\t\t\tInvalid!! Enter Number Between 1 to 10 : " ,"\t\t\t\t\tPlease Enter Number Between 1 to 10 : ");
+        int Choice = clsInputValidate::ReadIntNumberBetween(1,10,"\t\t\t\t\tInvalid!! Enter Number Between 1 to 10 : " ,"\t\t\t\t\tPlease Enter Number Between 1 to 10 : ");
     
         return Choice;
     
