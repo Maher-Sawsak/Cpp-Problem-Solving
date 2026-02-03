@@ -7,7 +7,7 @@
 
 int main()
 {
-	clsDblLinkedList <float> MyObject;
+	clsDblLinkedList <int> MyObject;
 	if (MyObject.IsEmpty()) {
 		cout << "\n\nYes, Your Linked List Is Empty\n";
 	}
@@ -24,7 +24,14 @@ int main()
 
 	cout << endl;
 
-	cout << "The Value In This Index Is : " << MyObject.GetItem(1) << endl;
-	cout << "The Value In This Index Is : " << MyObject.GetItem(2) << endl;
-	cout << "The Value In This Index Is : " << MyObject.GetItem(3) << endl;
+	cout << endl;
+
+	if (MyObject.UpdateItem(2, 500)) {
+	
+		cout << "\nUpdated Successful :)\n";
+	}else{
+	
+		cout << "\nSorry , Error\n";
+	}
+	MyObject.PrintList();
 }
