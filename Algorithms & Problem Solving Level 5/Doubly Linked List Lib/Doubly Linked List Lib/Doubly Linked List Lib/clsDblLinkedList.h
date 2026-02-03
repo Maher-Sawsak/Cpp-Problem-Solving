@@ -249,4 +249,25 @@ public:
 
     }
 
+    Node* GetNode(int IndexOfNode) {
+       
+        int Counter = 0;
+        if (IndexOfNode >= _Size   || IndexOfNode < 0) {
+            return nullptr;
+        }
+
+        Node* Current = head;
+
+        while (Current != nullptr && (Current->next != NULL)) {
+
+            if (Counter == IndexOfNode ) {
+                return Current;
+            }
+
+            Current = Current->next;
+            Counter++;
+        }
+        return nullptr;
+    }
+
 };
