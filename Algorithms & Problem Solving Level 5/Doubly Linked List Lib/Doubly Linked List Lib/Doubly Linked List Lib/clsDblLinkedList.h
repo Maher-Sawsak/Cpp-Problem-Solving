@@ -7,6 +7,9 @@ template <class T>
 class clsDblLinkedList
 {
 
+protected:
+    int _Size = 0;
+
 public:
 
     class Node
@@ -39,7 +42,7 @@ public:
             head->prev = newNode;
         }
         head = newNode;
-
+        _Size++;
 
     }
 
@@ -93,7 +96,7 @@ public:
         }
         current->next = newNode;
 
-
+        _Size++;
     }
 
     void InsertAtEnd(T value) {
@@ -123,6 +126,7 @@ public:
         }
 
 
+        _Size++;
     }
 
     void DeleteNode(Node*& NodeToDelete) {
@@ -147,6 +151,7 @@ public:
         delete NodeToDelete;
 
 
+        _Size--;
     }
 
     void DeleteFirstNode()
@@ -169,6 +174,7 @@ public:
         }
         delete temp;
 
+        _Size--;
     }
 
     void DeleteLastNode() {
@@ -200,6 +206,14 @@ public:
         current->next = NULL;
         delete temp;
 
+        _Size--;
     }
+
+    int Size() {
+       //this algorithms it tooks O(1).
+        return  _Size;
+    }
+
+
 
 };

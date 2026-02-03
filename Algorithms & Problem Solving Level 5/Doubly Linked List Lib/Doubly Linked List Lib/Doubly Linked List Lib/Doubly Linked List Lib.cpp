@@ -23,7 +23,7 @@ int main()
 	cout << "\n\nResult for deleteing Last Node  :  ";
 	MyObject.PrintList();
 
-
+	cout << "\n\nThe size of the linked list is  : " << MyObject.Size() << endl;
 	cout << "\n\nResult for deleteing   First Node :  ";
 	MyObject.DeleteFirstNode();
 	MyObject.PrintList();
@@ -38,5 +38,8 @@ int main()
 	else {
 		cout << "\nThe Value Not Found :(";
 	}
+
+	cout << "\n\nThe size of the linked list is  : " << MyObject.Size();
+
 	
 }
