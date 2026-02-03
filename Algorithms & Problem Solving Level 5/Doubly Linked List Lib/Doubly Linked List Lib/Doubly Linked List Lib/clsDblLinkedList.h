@@ -213,7 +213,9 @@ public:
        //this algorithms it tooks O(1).
         return  _Size;
     }
-
+    bool IsEmpty(){
+        return (_Size == 0 ? true : false);
+    }
 
 
 };

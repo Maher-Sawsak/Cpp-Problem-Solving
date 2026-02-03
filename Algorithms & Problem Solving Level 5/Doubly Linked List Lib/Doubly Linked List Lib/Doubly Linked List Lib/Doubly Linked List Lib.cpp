@@ -8,7 +8,12 @@
 int main()
 {
 	clsDblLinkedList <float> MyObject;
-
+	if (MyObject.IsEmpty()) {
+		cout << "\n\nYes, Your Linked List Is Empty\n";
+	}
+	else {
+		cout << "\n\nYour Linked List Is Not Full\n";
+	}
 	MyObject.InsertAtBeginning(1.6);
 	MyObject.InsertAtBeginning(2.8);
 	MyObject.InsertAtBeginning(3.83);
@@ -42,4 +47,15 @@ int main()
 	cout << "\n\nThe size of the linked list is  : " << MyObject.Size();
 
 	
+
+	if (MyObject.IsEmpty()) {
+		cout << "\n\nYes, Your Linked List Is Empty\n";
+	}
+	else {
+		cout << "\n\nYour Linked List Is Not Full\n";
+	}
+
+
+
+
 }
