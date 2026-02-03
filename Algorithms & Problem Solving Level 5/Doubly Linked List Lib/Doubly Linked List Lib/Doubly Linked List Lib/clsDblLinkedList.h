@@ -218,4 +218,14 @@ public:
     }
 
 
+    void Clear() {
+    
+        while (_Size > 0) {
+            //the delete will change the size inside it.
+            DeleteFirstNode();
+        }
+   
+    }
+
+
 };

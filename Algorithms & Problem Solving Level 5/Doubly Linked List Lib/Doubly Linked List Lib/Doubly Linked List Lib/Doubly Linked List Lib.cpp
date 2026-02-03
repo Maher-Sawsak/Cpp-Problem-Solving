@@ -12,7 +12,7 @@ int main()
 		cout << "\n\nYes, Your Linked List Is Empty\n";
 	}
 	else {
-		cout << "\n\nYour Linked List Is Not Full\n";
+		cout << "\n\nYour Linked List Is  Full\n";
 	}
 	MyObject.InsertAtBeginning(1.6);
 	MyObject.InsertAtBeginning(2.8);
@@ -47,14 +47,16 @@ int main()
 	cout << "\n\nThe size of the linked list is  : " << MyObject.Size();
 
 	
-
+	
 	if (MyObject.IsEmpty()) {
 		cout << "\n\nYes, Your Linked List Is Empty\n";
 	}
 	else {
-		cout << "\n\nYour Linked List Is Not Full\n";
+		cout << "\n\nYour Linked List Is  Full\n";
 	}
 
+	MyObject.Clear();
+	cout << "\n\nExcuting the Clear  :     " << MyObject.Size() << endl;
 
 
 
