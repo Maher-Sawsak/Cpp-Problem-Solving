@@ -270,7 +270,7 @@ public:
         return nullptr;
     }
 
-       
+
     T GetItem(int Index) {
     
         Node* ItemNode = GetNode(Index);
@@ -298,6 +298,20 @@ public:
     
     }
 
+    bool InsertAfter(int Index, T Value) {
+
+        Node* ItemNode = GetNode(Index);
+
+        if (ItemNode != NULL) {
+
+        InsertAfter(ItemNode , Value);
+        return true;
+        }
+        else {
+            return false;
+        }
+
+    }
 
 
 
