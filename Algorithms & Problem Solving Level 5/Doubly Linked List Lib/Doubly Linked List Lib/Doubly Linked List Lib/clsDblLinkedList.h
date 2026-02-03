@@ -270,4 +270,21 @@ public:
         return nullptr;
     }
 
+       
+    T GetItem(int Index) {
+    
+        Node* ItemNode = GetNode(Index);
+        //be careful here u cant use nullptr cuz it will return address noe any int or float etc.values.
+        //you must use NULL cuz it will return 0 but nullptr its acctualy a null pointer empty space.
+        if (ItemNode == NULL) {
+            return NULL;
+        }
+        else {
+            return ItemNode->value;
+        }
+    }
+
+
+
+
 };
