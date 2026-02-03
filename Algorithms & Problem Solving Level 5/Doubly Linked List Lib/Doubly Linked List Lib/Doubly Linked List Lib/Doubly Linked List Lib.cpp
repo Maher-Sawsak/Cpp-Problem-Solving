@@ -23,7 +23,9 @@ int main()
 	MyObject.PrintList();
 
 	cout << endl;
-	MyObject.Reverse();
-	MyObject.PrintList();
-   
+
+	clsDblLinkedList<float>::Node* N1 = MyObject.GetNode(3);
+	cout << "\nThe value of the node is :  " << N1->value << endl;
+	cout << "\nThe value of the next node is :  " << N1->next->value << endl;
+	cout << "\nThe value of the previous node is : " << N1->prev->value << endl;
 }
