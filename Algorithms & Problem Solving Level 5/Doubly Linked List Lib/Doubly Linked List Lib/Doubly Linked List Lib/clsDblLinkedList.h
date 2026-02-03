@@ -227,5 +227,26 @@ public:
    
     }
 
+    void Reverse() {
+       
+        Node* Current = head;
+        Node* temp = nullptr;
+        while (Current != nullptr) {
+        
+            temp = Current->prev;
+            Current->prev = Current->next;
+            Current->next = temp;
+            //why its prev ? cuz we swap it so we must goby prev instead next to go to the next node.
+            Current = Current->prev;
+        }
+        
+        //Now the head is still point to same we will change it if u didn't do the next code will just give u the first node.
+
+        if (temp != nullptr) {
+            head = temp->prev;
+        }
+
+
+    }
 
 };
