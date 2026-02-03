@@ -24,8 +24,7 @@ int main()
 
 	cout << endl;
 
-	clsDblLinkedList<float>::Node* N1 = MyObject.GetNode(3);
-	cout << "\nThe value of the node is :  " << N1->value << endl;
-	cout << "\nThe value of the next node is :  " << N1->next->value << endl;
-	cout << "\nThe value of the previous node is : " << N1->prev->value << endl;
+	cout << "The Value In This Index Is : " << MyObject.GetItem(1) << endl;
+	cout << "The Value In This Index Is : " << MyObject.GetItem(2) << endl;
+	cout << "The Value In This Index Is : " << MyObject.GetItem(3) << endl;
 }
