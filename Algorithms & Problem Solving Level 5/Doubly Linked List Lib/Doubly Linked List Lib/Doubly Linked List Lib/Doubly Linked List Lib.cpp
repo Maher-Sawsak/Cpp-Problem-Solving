@@ -3,32 +3,31 @@
 
 #include <iostream>
 #include "clsDblLinkedList.h"
-
+#include "clsMyQueue.h"
 
 int main()
 {
-	clsDblLinkedList <int> MyObject;
+	clsMyQueue <int> MyQueue;
+
+	MyQueue.push(10);
+	MyQueue.push(20);
+	MyQueue.push(30);
+	MyQueue.push(40);
+	MyQueue.push(50);
+
+	cout << "\nMy Queue : ";
+	MyQueue.Print();
+
+
+	cout << "\n MyQueue Size : " << MyQueue.Size();
+
+	cout << "\n My Queue Front : " << MyQueue.front();
+	cout << "\n My Queue Back : " << MyQueue.back();
+
+	MyQueue.pop();
+
+	cout << "\n\n\n MyQueue Size After Popping : " << MyQueue.Size();
 	
-	MyObject.InsertAtBeginning(4);
-	MyObject.InsertAtBeginning(3);
-	MyObject.InsertAtBeginning(2);
-	MyObject.InsertAtBeginning(1);
-	MyObject.InsertAtEnd(5);
-
-	cout << "\n\nBefor Inserting : ";
-	MyObject.PrintList();
-
-	cout << endl;
-	cout << "\nThe Result After Inserting A Node By Index  : ";
-
-	MyObject.InsertAfter(3, 700);
-	
-	MyObject.PrintList();
-
-
-
-
-
-
-
+	cout << "\nMy Queue After Popping : ";
+	MyQueue.Print();
 }
