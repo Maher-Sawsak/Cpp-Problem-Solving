@@ -258,7 +258,7 @@ public:
 
         Node* Current = head;
 
-        while (Current != nullptr && (Current->next != NULL)) {
+        while (Current != nullptr ) {
 
             if (Counter == IndexOfNode ) {
                 return Current;
