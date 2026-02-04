@@ -53,6 +53,47 @@ public:
 		return _MyListObj.IsEmpty();
 	}
 
+	T GetItem(int Index) {
+
+		return _MyListObj.GetItem(Index);
+	
+	}
+
+	void Reverse() {
+	
+		_MyListObj.Reverse();
+	}
+  
+	void UpdateItem(int Index , T Value) {
+	
+		_MyListObj.UpdateItem(Index, Value);
+
+	}
+
+	void InsertAfter(int Index, T Value) {
+		
+		_MyListObj.InsertAfter(Index, Value);
+
+	}
+
+	void InsertAtFront(T Value) {
+
+		_MyListObj.InsertAtBeginning(Value);
+
+	}
+
+	void InsertAtBack(T Value) {
+
+		_MyListObj.InsertAtEnd(Value);
+
+	}
+
+	void Clear() {
+
+		_MyListObj.Clear();
+
+	}
+
 
 };
 
