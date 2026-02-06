@@ -10,7 +10,7 @@ int main()
 	clsDynamicArray <int> MyArray(5);
 
 	cout << "\nIs Empty Result  :  " << MyArray.IsEmpty();
-	cout << "\nThe Size Is        :  " << MyArray.Size();
+	cout << "\nThe Size Is        :  " << MyArray.Size() << endl;
 
 	MyArray.SetItem(0, 500);
 	MyArray.SetItem(1, 599);
@@ -22,22 +22,7 @@ int main()
 	MyArray.PrintList();
 
 
-	cout << "\nIs Empty Result  :  " << MyArray.IsEmpty();
-	cout << "\nThe Size Is        :  " << MyArray.Size();
+	cout << "\nThe Result Of Get Item Of Index(2) : " <<MyArray.GetItem(2);
 
-
-	cout << "\n\n\n\n";
-	MyArray.Resize(2);
-	MyArray.PrintList();
-	cout << "\nIs Empty Result  :  " << MyArray.IsEmpty();
-	cout << "\nThe Size Is      :  " << MyArray.Size();
-
-
-
-
-	cout << "\n\n\n\n";
-	MyArray.Resize(10);
-	MyArray.PrintList();
-	cout << "\nIs Empty Result  :  " << MyArray.IsEmpty();
-	cout << "\nThe Size Is      :  " << MyArray.Size();
 }
+
