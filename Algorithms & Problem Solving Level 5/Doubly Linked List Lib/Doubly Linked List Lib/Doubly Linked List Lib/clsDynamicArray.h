@@ -118,5 +118,15 @@ public:
         OriginalArray = _TempArray;
     }
 
+
+    void Clear() {
+        _Size = 0;
+        delete[]  OriginalArray;
+        OriginalArray = nullptr;
+
+    }
+
+
+
 };
 
