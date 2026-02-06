@@ -99,5 +99,11 @@ public:
     }
 
 
+    T GetItem(int Index) {
+
+        return OriginalArray[Index];
+    }
+
+
 };
 
