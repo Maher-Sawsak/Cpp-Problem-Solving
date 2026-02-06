@@ -103,7 +103,20 @@ public:
 
         return OriginalArray[Index];
     }
+    void Reverse() {
 
+        if (_Size <= 0) {
+            return;
+        }
+        _TempArray = new T[_Size];
+        int CounterSize = _Size - 1;
+        for (int i = 0; i < _Size;i++) {
+            _TempArray[i] = OriginalArray[CounterSize];
+            CounterSize--;
+        }
+        delete[] OriginalArray;
+        OriginalArray = _TempArray;
+    }
 
 };
 
