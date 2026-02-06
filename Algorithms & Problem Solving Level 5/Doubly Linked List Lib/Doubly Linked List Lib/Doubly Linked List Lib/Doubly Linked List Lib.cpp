@@ -25,4 +25,19 @@ int main()
 	cout << "\nIs Empty Result  :  " << MyArray.IsEmpty();
 	cout << "\nThe Size Is        :  " << MyArray.Size();
 
+
+	cout << "\n\n\n\n";
+	MyArray.Resize(2);
+	MyArray.PrintList();
+	cout << "\nIs Empty Result  :  " << MyArray.IsEmpty();
+	cout << "\nThe Size Is      :  " << MyArray.Size();
+
+
+
+
+	cout << "\n\n\n\n";
+	MyArray.Resize(10);
+	MyArray.PrintList();
+	cout << "\nIs Empty Result  :  " << MyArray.IsEmpty();
+	cout << "\nThe Size Is      :  " << MyArray.Size();
 }
