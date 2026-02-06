@@ -22,7 +22,13 @@ int main()
 	MyArray.PrintList();
 
 
-	cout << "\nThe Result Of Get Item Of Index(2) : " <<MyArray.GetItem(2);
+
+	cout << "\n\nthe Result For Reversing  : ";
+	MyArray.Reverse();
+	MyArray.PrintList();
+
+
+
 
 }
 
