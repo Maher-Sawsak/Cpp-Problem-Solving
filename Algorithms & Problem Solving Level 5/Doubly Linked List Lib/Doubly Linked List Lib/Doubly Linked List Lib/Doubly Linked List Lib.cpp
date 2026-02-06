@@ -29,6 +29,9 @@ int main()
 
 
 
+	cout << endl;
+	MyArray.Clear();
+	MyArray.PrintList();
 
 }
 
