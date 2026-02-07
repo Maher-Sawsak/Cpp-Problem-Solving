@@ -31,6 +31,9 @@ int main()
 	MyArray.InsertAtEnd(400);
 	MyArray.PrintList();
 
+	cout << "\n\nThe Array After Insert Befor Index 3 Value 600 Is : ";
+	MyArray.InsertBefor(3, 600);
+	MyArray.PrintList();
 
 
 }
