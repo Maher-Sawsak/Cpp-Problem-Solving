@@ -28,6 +28,12 @@ int main()
 
 
 
+	cout << "\n\n\nThe Array After Deleting  Last Item Is : ";
+	MyArray.DeleteLastItem();
+	MyArray.PrintList();
+	cout << "\nThe Size After Deleting  Last Item Is :  " << MyArray.Size() << endl;
+
+
 
 }
 
