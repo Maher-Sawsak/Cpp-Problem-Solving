@@ -202,7 +202,10 @@ public:
     
     }
     
+    bool InsertAtEnd(T Value) {
+        return InsertAt(_Size, Value);
 
+    }
 
   
       void Clear() {
