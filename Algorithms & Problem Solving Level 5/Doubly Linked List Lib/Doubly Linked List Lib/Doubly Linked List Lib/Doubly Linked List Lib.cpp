@@ -27,6 +27,9 @@ int main()
 	MyArray.PrintList();
 
 
+	cout << "\n\nThe Array After Insert Value 400 at End Is : ";
+	MyArray.InsertAtEnd(400);
+	MyArray.PrintList();
 
 
 
