@@ -22,10 +22,12 @@ int main()
 
 
 
-
-	cout << "\n\nThe Array After Insert Value 700 at Index (3) Is : ";
-	MyArray.InsertAt(5, 700);
+	cout << "\n\nThe Array After Insert Value 200 at Beginning Is : ";
+	MyArray.InsertAtBeginning(200);
 	MyArray.PrintList();
+
+
+
 
 
 }
