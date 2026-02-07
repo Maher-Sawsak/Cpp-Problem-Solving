@@ -12,26 +12,24 @@ int main()
 	cout << "\nIs Empty Result  :  " << MyArray.IsEmpty();
 	cout << "\nThe Size Is        :  " << MyArray.Size() << endl;
 
-	MyArray.SetItem(0, 500);
-	MyArray.SetItem(1, 599);
-	MyArray.SetItem(2, 600);
-	MyArray.SetItem(3, 700);
-	MyArray.SetItem(4, 800);
-	MyArray.SetItem(5, 999);
-
+	MyArray.SetItem(0, 10);
+	MyArray.SetItem(1, 20);
+	MyArray.SetItem(2, 30);
+	MyArray.SetItem(3, 40);
+	MyArray.SetItem(4, 50);
 	MyArray.PrintList();
 
 
 
-	cout << "\n\nthe Result For Reversing  : ";
-	MyArray.Reverse();
+	cout << "\nThe Array After Deleting Item At Index (2) Is : ";
+	MyArray.DeleteItemAt(2);
 	MyArray.PrintList();
+	cout << "\nThe Size Is After Deleting Item At Index (2) Is :  " << MyArray.Size() << endl;
 
 
-
-	cout << endl;
-	MyArray.Clear();
+	cout << "\nThe Array After Deleting Item At Index (0) Is : ";
+	MyArray.DeleteItemAt(0);
 	MyArray.PrintList();
-
+	cout << "\nThe Size Is After Deleting at index 0 :  " << MyArray.Size() << endl;
 }
 
