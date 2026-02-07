@@ -196,7 +196,16 @@ public:
         return true;
     }
 
-    void Clear() {
+  
+    bool InsertAtBeginning(T Value) {
+       return InsertAt(0, Value);
+    
+    }
+    
+
+
+  
+      void Clear() {
         _Size = 0;
         delete[]  OriginalArray;
         OriginalArray = nullptr;
