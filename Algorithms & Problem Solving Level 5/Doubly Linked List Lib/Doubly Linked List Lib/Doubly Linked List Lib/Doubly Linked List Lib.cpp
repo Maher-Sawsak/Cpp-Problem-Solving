@@ -19,21 +19,7 @@ int main()
 	MyArray.SetItem(4, 50);
 	MyArray.PrintList();
 
-
-
-	cout << "\nThe Array After Deleting  First Item Is : ";
-	MyArray.DeletingFirstItem();
-	MyArray.PrintList();
-	cout << "\nThe Size After Deleting  First Item Is :  " << MyArray.Size() << endl;
-
-
-
-	cout << "\n\n\nThe Array After Deleting  Last Item Is : ";
-	MyArray.DeleteLastItem();
-	MyArray.PrintList();
-	cout << "\nThe Size After Deleting  Last Item Is :  " << MyArray.Size() << endl;
-
-
+	cout << "\nThe Index Of Value 40 Is : " << MyArray.Find(40) << endl;
 
 }
 
