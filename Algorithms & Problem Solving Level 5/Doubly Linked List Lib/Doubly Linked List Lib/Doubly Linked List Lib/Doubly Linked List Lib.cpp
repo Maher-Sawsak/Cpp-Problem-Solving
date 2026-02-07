@@ -21,15 +21,13 @@ int main()
 
 
 
-	cout << "\nThe Array After Deleting Item At Index (2) Is : ";
-	MyArray.DeleteItemAt(2);
+	cout << "\nThe Array After Deleting  First Item Is : ";
+	MyArray.DeletingFirstItem();
 	MyArray.PrintList();
-	cout << "\nThe Size Is After Deleting Item At Index (2) Is :  " << MyArray.Size() << endl;
+	cout << "\nThe Size After Deleting  First Item Is :  " << MyArray.Size() << endl;
 
 
-	cout << "\nThe Array After Deleting Item At Index (0) Is : ";
-	MyArray.DeleteItemAt(0);
-	MyArray.PrintList();
-	cout << "\nThe Size Is After Deleting at index 0 :  " << MyArray.Size() << endl;
+
+
 }
 
