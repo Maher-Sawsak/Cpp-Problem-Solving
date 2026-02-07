@@ -164,6 +164,9 @@ public:
     }
 
 
+    bool DeleteItem(T Value) {
+        return DeleteItemAt(Find(Value));
+    }
 
 
     void Clear() {
