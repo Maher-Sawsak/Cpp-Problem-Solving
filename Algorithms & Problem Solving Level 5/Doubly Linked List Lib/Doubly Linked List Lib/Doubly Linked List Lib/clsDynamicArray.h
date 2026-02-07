@@ -146,7 +146,10 @@ public:
 
     }
     
-  
+
+    void DeleteLastItem() {
+        DeleteItemAt(_Size - 1);
+    }
 
     void Clear() {
         _Size = 0;
