@@ -19,14 +19,13 @@ int main()
 	MyArray.SetItem(4, 50);
 	MyArray.PrintList();
 
-	cout << "\nThe Index Of Value 40 Is : " << MyArray.Find(40) << endl;
 
 
-	cout << "\n\nThe Array After Delete Value 40 Is : ";
-	cout << endl << MyArray.DeleteItem(40) << endl;//it will return true or false.
+
+
+	cout << "\n\nThe Array After Insert Value 700 at Index (3) Is : ";
+	MyArray.InsertAt(5, 700);
 	MyArray.PrintList();
-
-
 
 
 }
