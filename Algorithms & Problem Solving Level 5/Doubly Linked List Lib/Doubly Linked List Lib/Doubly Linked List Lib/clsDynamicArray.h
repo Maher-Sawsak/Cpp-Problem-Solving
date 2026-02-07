@@ -169,6 +169,33 @@ public:
     }
 
 
+    bool InsertAt(int Index, T Value) {
+
+        if (Index > _Size || Index < 0) {
+            return false;
+        }
+      
+        _Size++;
+        _TempArray = new T[_Size];
+        //copy all element until the index but the index itself we'll leave it as it is.
+        for (int i = 0;i < Index;i++) {
+        
+            _TempArray[i] = OriginalArray[i];
+          
+        }
+        //now I'll set the value of the index after i copied the values befor the index.
+        _TempArray[Index] = Value;
+
+        //copy after the index to the new array.
+        for (int i = Index; i < _Size - 1;i++) {
+        
+            _TempArray[i + 1] = OriginalArray[i];
+        }
+        delete[] OriginalArray;
+        OriginalArray = _TempArray;
+        return true;
+    }
+
     void Clear() {
         _Size = 0;
         delete[]  OriginalArray;
