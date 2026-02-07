@@ -212,7 +212,34 @@ public:
 
     }
 
-      void Clear() {
+    bool InsertAfter(int Index, T Value) {
+
+        if (Index >= _Size || Index < 0) {
+            return false;
+        }
+
+        _Size++;
+        _TempArray = new T[_Size];
+
+        for (int i = 0;i <= Index;i++) {
+
+            _TempArray[i] = OriginalArray[i];
+        }
+        _TempArray[Index + 1] = Value;
+
+        for (int i = Index + 1; i < _Size - 1;i++) {
+
+            _TempArray[i + 1] = OriginalArray[i];
+
+        }
+        delete[] OriginalArray;
+        OriginalArray = _TempArray;
+        return true;
+
+    }
+    
+
+    void Clear() {
         _Size = 0;
         delete[]  OriginalArray;
         OriginalArray = nullptr;
