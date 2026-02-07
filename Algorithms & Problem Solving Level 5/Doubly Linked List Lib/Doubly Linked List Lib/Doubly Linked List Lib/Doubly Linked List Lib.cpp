@@ -36,5 +36,10 @@ int main()
 	MyArray.PrintList();
 
 
+
+	cout << "\n\nThe Array After Insert After Index 5 Value 800 Is : ";
+	MyArray.InsertAfter(7, 800);
+	MyArray.PrintList();
+
 }
 
