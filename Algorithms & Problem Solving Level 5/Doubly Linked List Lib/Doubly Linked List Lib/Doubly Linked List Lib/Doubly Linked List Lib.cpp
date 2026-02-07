@@ -1,45 +1,69 @@
 // Doubly Linked List Lib.
+
 #include <iostream>
-#include "clsMyStack.h"
-#include "clsDynamicArray.h"
+#include "clsMyQueueArr.h"
+
 using namespace std;
 
 int main()
 {
 
-	clsDynamicArray <int> MyArray(5);
+    clsMyQueueArr <int> MyQueue;
 
-	cout << "\nIs Empty Result  :  " << MyArray.IsEmpty();
-	cout << "\nThe Size Is        :  " << MyArray.Size() << endl;
-
-	MyArray.SetItem(0, 10);
-	MyArray.SetItem(1, 20);
-	MyArray.SetItem(2, 30);
-	MyArray.SetItem(3, 40);
-	MyArray.SetItem(4, 50);
-	MyArray.PrintList();
+    MyQueue.push(10);
+    MyQueue.push(20);
+    MyQueue.push(30);
+    MyQueue.push(40);
+    MyQueue.push(50);
 
 
+    cout << "\nQueue: \n";
+    MyQueue.Print();
+
+    cout << "\nQueue Size: " << MyQueue.Size();
+    cout << "\nQueue Front: " << MyQueue.front();
+    cout << "\nQueue Back: " << MyQueue.back();
+
+    MyQueue.pop();
+
+    cout << "\n\nQueue after pop() : \n";
+    MyQueue.Print();
 
 
-	cout << "\n\nThe Array After Insert Value 200 at Beginning Is : ";
-	MyArray.InsertAtBeginning(200);
-	MyArray.PrintList();
+    cout << "\n\n Item(2) : " << MyQueue.GetItem(2);
 
 
-	cout << "\n\nThe Array After Insert Value 400 at End Is : ";
-	MyArray.InsertAtEnd(400);
-	MyArray.PrintList();
-
-	cout << "\n\nThe Array After Insert Befor Index 3 Value 600 Is : ";
-	MyArray.InsertBefor(3, 600);
-	MyArray.PrintList();
+    MyQueue.Reverse();
+    cout << "\n\nQueue after reverse() : \n";
+    MyQueue.Print();
 
 
+    MyQueue.UpdateItem(2, 600);
+    cout << "\n\nQueue after updating Item(2) to 600 : \n";
+    MyQueue.Print();
 
-	cout << "\n\nThe Array After Insert After Index 5 Value 800 Is : ";
-	MyArray.InsertAfter(7, 800);
-	MyArray.PrintList();
+
+    MyQueue.InsertAfter(2, 800);
+    cout << "\n\nQueue after Inserting 800 after Item(2) : \n";
+    MyQueue.Print();
+
+
+
+    MyQueue.InsertAtFront(1000);
+    cout << "\n\nQueue after Inserting 1000 at front: \n";
+    MyQueue.Print();
+
+
+    MyQueue.InsertAtBack(2000);
+    cout << "\n\nQueue after Inserting 2000 at back: \n";
+    MyQueue.Print();
+
+
+    MyQueue.Clear();
+    cout << "\n\nQueue after Clear(): \n";
+    MyQueue.Print();
+
+
+
 
 }
-
