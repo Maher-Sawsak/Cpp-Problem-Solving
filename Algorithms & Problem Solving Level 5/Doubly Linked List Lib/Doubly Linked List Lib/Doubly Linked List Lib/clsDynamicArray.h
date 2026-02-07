@@ -141,6 +141,13 @@ public:
     }
 
 
+    void DeletingFirstItem() {
+        DeleteItemAt(0);
+
+    }
+    
+  
+
     void Clear() {
         _Size = 0;
         delete[]  OriginalArray;
