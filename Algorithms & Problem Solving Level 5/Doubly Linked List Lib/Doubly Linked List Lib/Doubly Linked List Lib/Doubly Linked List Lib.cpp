@@ -21,5 +21,13 @@ int main()
 
 	cout << "\nThe Index Of Value 40 Is : " << MyArray.Find(40) << endl;
 
+
+	cout << "\n\nThe Array After Delete Value 40 Is : ";
+	cout << endl << MyArray.DeleteItem(40) << endl;//it will return true or false.
+	MyArray.PrintList();
+
+
+
+
 }
 
