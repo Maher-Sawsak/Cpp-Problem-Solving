@@ -207,7 +207,11 @@ public:
 
     }
 
-  
+    bool InsertBefor(int Index, T Value) {
+        return InsertAt(Index, Value);
+
+    }
+
       void Clear() {
         _Size = 0;
         delete[]  OriginalArray;
