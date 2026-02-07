@@ -151,6 +151,21 @@ public:
         DeleteItemAt(_Size - 1);
     }
 
+    int Find(T Value) {
+        if (_Size <= 0) {
+            return -1;
+        }
+        for (int i = 0; i < _Size;i++) {
+            if (OriginalArray[i] == Value)
+                return i;
+        
+        }  
+        return -1;
+    }
+
+
+
+
     void Clear() {
         _Size = 0;
         delete[]  OriginalArray;
