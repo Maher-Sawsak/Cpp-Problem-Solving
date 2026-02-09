@@ -725,7 +725,23 @@ bool IsValidPassword(std::string password) {
 
 
 
+std::vector<int> RemoveDuplicates(std::vector<int> v) {
+    std::vector<int> uniqueVector;
 
+    for (int i = 0; i < v.size(); i++) {
+        bool isDuplicate = false;
+        for (int j = 0; j < uniqueVector.size(); j++) {
+            if (v[i] == uniqueVector[j]) {
+                isDuplicate = true;
+                break;
+            }
+        }
+        if (!isDuplicate) {
+            uniqueVector.push_back(v[i]);
+        }
+    }
+    return uniqueVector;
+}
 
 
 
