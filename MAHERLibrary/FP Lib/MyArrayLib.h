@@ -707,7 +707,21 @@ namespace MyArrayLib {
 
 
 
+bool IsValidPassword(std::string password) {
+    if (password.length() < 8) return false;
 
+    bool hasUpper = false, hasLower = false, hasDigit = false, hasSpecial = false;
+    std::string specialChars = "!@#$%^&*()-_=+";
+
+    for (char c : password) {
+        if (isupper(c)) hasUpper = true;
+        else if (islower(c)) hasLower = true;
+        else if (isdigit(c)) hasDigit = true;
+        else if (specialChars.find(c) != std::string::npos) hasSpecial = true;
+    }
+
+    return hasUpper && hasLower && hasDigit && hasSpecial;
+}
 
 
 
