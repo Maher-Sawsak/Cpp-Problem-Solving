@@ -9,19 +9,13 @@
 class clsInputValidate
 {
 public:
-
-	static bool IsNumberBetween(int Number , int From,int To) {
+template<typename T>
+	static bool IsNumberBetween(T Number , T From,T To) {
 	
 		return (!(Number > To || Number < From));
 	
 	}
 
-
-	static bool IsNumberBetween(double Number, double From, double To) {
-
-		return (!(Number > To || Number < From));
-
-	}
 
 
 	static bool IsDateBetween(clsDate Date , clsDate StartDate,clsDate EndDate) {
